@@ -10,6 +10,7 @@ Static HTML, CSS and JavaScript. No build step or application backend. Publish w
 - `Estedad.woff2` / `Estedad-OFL.txt`: self-hosted Persian variable font and its OFL license.
 - `CNAME`: custom website domain.
 - `.nojekyll`: serve the static files directly.
+- `privacy/`, `terms/`, `delete-account/`: legal pages (Persian and English in the same HTML; `legal.css`, `legal.js`). The English text is the source. Linked from every page's footer.
 
 The page uses the existing Vazne dumbbell glyph with the owner’s silver/white glass and electric-blue reference direction. Persian uses self-hosted Estedad; Manrope and the Vazirmatn fallback are loaded from Google Fonts. Icons and the animated barbell are local SVG, with no animation library or external icon service. It does not collect form submissions or persist demo data.
 
@@ -17,6 +18,6 @@ The demo ranges from 20 to 100 kg in 2.5 kg steps. A 20 kg bar carries equal sta
 
 Run logic and DOM checks with `node --test site.test.cjs`.
 
-Public app download links have deliberately not been added: both platforms are currently in testing. Replace the availability section with verified public links when available.
+Public app download links have deliberately not been added: both platforms are currently in testing. The Google Play badge in the download section is a disabled placeholder: set `PLAY_STORE_URL` in `index.html` to the store link to turn it into a real link (and swap in Google's official badge artwork at launch).
 
 Website changes must not modify the `api` DNS record, app repository or app server. Only website apex/www configuration is in scope.
