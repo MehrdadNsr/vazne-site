@@ -34,7 +34,7 @@ html[dir=rtl] .button-orbit svg{transform:scaleX(-1)}
 .stepper button{min-width:36px;min-height:36px;transition:background .2s,transform .2s;touch-action:manipulation}
 .stepper button:active{transform:scale(.9);background:#d0ddec}
 .stepper button:disabled{opacity:.35}
-.weight-value output{font-variant-numeric:tabular-nums;min-width:2ch}
+.weight-value output{font-variant-numeric:normal;min-width:2ch}
 .feature{position:relative;overflow:hidden;transition:box-shadow .35s,border-color .35s,transform .35s}
 .feature:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,transparent 35%,#ffffff70 50%,transparent 65%);opacity:0;transform:translateX(-90%);transition:transform .7s,opacity .35s}
 .feature .icon{color:#2466df;transition:transform .35s,box-shadow .35s}
