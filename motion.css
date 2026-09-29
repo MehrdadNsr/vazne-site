@@ -1,0 +1,82 @@
+/* Small, dependency-free motion layer for the silver-glass landing page. */
+.icon-definitions{position:absolute;overflow:hidden;pointer-events:none}
+.language{display:inline-flex;align-items:center;gap:9px;direction:ltr}
+.language svg{width:18px;height:18px}
+.button-orbit{display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#ffffff12;border:1px solid #ffffff24;flex-shrink:0}
+.button-orbit svg{width:17px;height:17px;transition:transform .25s ease}
+html[dir=rtl] .button-orbit svg{transform:scaleX(-1)}
+.btn{gap:16px}
+.save{display:flex;align-items:center;justify-content:center;gap:8px;line-height:1.7}
+.save svg{width:19px;height:19px;flex-shrink:0}
+.save.done svg{animation:check-in .32s ease both}
+.glass-demo{overflow:hidden;-webkit-backdrop-filter:blur(20px)}
+.barbell-stage{position:relative;margin:0 -16px -8px;isolation:isolate}
+.barbell-halo{position:absolute;inset:16% 15% 5%;z-index:-1;border-radius:50%;background:radial-gradient(ellipse,#d7e5ff6b,transparent 68%);opacity:.65;transition:opacity .25s}
+.barbell-model{display:block;width:100%;height:auto;overflow:visible;pointer-events:none}
+.barbell-assembly{transform-origin:400px 168px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.glass-demo.logged .barbell-assembly{transform:translateY(-5px)}
+.plate-motion{opacity:0;transform:translateX(42px) scale(.9);transform-box:view-box;transform-origin:0 0;transition:opacity .24s ease,transform .42s cubic-bezier(.16,1,.3,1)}
+.plate-motion.is-mounted{opacity:1;transform:translateX(0) scale(1)}
+.plate-size{transform-origin:0 0;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.barbell-collar{transition:transform .38s cubic-bezier(.16,1,.3,1)}
+.plate-meta{font-size:11px;color:#718096;text-align:center;margin:0 0 16px;min-height:20px}
+.slider-glass{height:56px;margin:0 12px;overflow:visible;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
+.slider-scale{position:absolute;inset:0 22px;pointer-events:none;direction:ltr}
+.slider-glass .ruler{inset:18px 0;opacity:.52;background:repeating-linear-gradient(to right,#546172 0,#546172 1px,transparent 1px,transparent 18px)}
+.slider-thumb{position:absolute;left:var(--weight-position,50%);top:6px;bottom:6px;width:12px;transform:translateX(-50%);border:1.5px solid white;border-radius:9px;background:linear-gradient(180deg,#315aff,#3d96ff 60%,#65d7f2);box-shadow:0 0 6px #fff,0 0 16px #439dff90,0 0 28px #62bdff60;transition:box-shadow .2s,width .2s}
+.slider-glass input{inset:0;width:100%;height:100%;margin:0;opacity:0;z-index:2;cursor:grab;touch-action:pan-y pinch-zoom;direction:ltr}
+.slider-glass:focus-within{outline:3px solid #2466df;outline-offset:5px}
+.slider-glass.is-dragging,.slider-glass.is-dragging input{cursor:grabbing}
+.slider-glass.is-dragging .slider-thumb{width:15px;box-shadow:0 0 6px #fff,0 0 22px #439dffc0,0 0 36px #62bdff80}
+.glass-demo:has(.is-dragging) .barbell-halo{opacity:1}
+.slide-hint{display:flex;align-items:center;justify-content:center;gap:7px;margin:12px 0 19px;font-size:12px}
+.slide-hint svg{width:19px;height:19px;color:#456d9a}
+.stepper button{min-width:36px;min-height:36px;transition:background .2s,transform .2s;touch-action:manipulation}
+.stepper button:active{transform:scale(.9);background:#d0ddec}
+.stepper button:disabled{opacity:.35}
+.weight-value output{font-variant-numeric:tabular-nums;min-width:2ch}
+.feature{position:relative;overflow:hidden;transition:box-shadow .35s,border-color .35s,transform .35s}
+.feature:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,transparent 35%,#ffffff70 50%,transparent 65%);opacity:0;transform:translateX(-90%);transition:transform .7s,opacity .35s}
+.feature .icon{color:#2466df;transition:transform .35s,box-shadow .35s}
+.download{position:relative;isolation:isolate}
+.download:before{content:"";position:absolute;inset:10% -8%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse,#dce8fa85,transparent 68%)}
+.motion-ready .reveal{opacity:0;transform:translate3d(0,28px,0);filter:blur(5px);transition:opacity .7s ease,transform .8s cubic-bezier(.16,1,.3,1),filter .7s ease;transition-delay:var(--reveal-delay,0ms)}
+.motion-ready .reveal.is-visible,.motion-ready .reveal:focus-within{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+.motion-ready .progress-visual .bar{transform:scaleY(.08);transform-origin:bottom;transition:transform .85s cubic-bezier(.16,1,.3,1);transition-delay:calc(120ms + var(--bar-index,0)*75ms)}
+.motion-ready .progress-visual.is-visible .bar{transform:scaleY(1)}
+@keyframes check-in{from{transform:scale(.6);opacity:.5}to{transform:scale(1);opacity:1}}
+@media(hover:hover) and (pointer:fine){
+  .btn:hover .button-orbit svg{transform:translate(2px,-2px)}
+  html[dir=rtl] .btn:hover .button-orbit svg{transform:translate(-2px,-2px) scaleX(-1)}
+  .feature:hover,.motion-ready .feature.is-visible:hover{transform:translateY(-6px);box-shadow:0 20px 45px #25395010;border-color:#d7e5fb;transition-delay:0ms}
+  .feature:hover:after{opacity:1;transform:translateX(90%)}
+  .feature:hover .icon{transform:translateY(-3px) rotate(-5deg);box-shadow:0 8px 20px #2478de14}
+}
+@media(min-width:761px){.barbell-stage{margin-top:3px;margin-bottom:-9px}.glass-demo .weight-value{padding-top:22px}.demo-controls{gap:10px}}
+@media(max-width:760px){
+  .barbell-stage{margin:5px -14px -3px}
+  .glass-demo .weight-value{padding-top:22px}
+  .slider-glass{height:54px;margin-inline:6px}
+  .slider-glass input{height:100%}
+  .plate-meta{margin-bottom:15px;font-size:10px}
+  .slide-hint{font-size:11px}
+  .reps{padding:6px 9px;gap:6px}
+  .stepper{gap:6px}
+  .stepper button{min-width:34px;min-height:34px}
+  .save{min-height:48px;padding:8px;font-size:12px}
+  .button-orbit{width:27px;height:27px}
+  .download:before{inset:15% 0}
+}
+@media(max-width:370px){
+  html[lang=fa] h1{font-size:39px}
+  .demo-controls{flex-wrap:wrap}
+  .reps,.save{flex-basis:100%}
+  .plate-meta{font-size:9px}
+  .language{padding-inline:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .motion-ready .reveal,.motion-ready .progress-visual .bar{opacity:1;transform:none;filter:none}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+@media print{.motion-ready .reveal{opacity:1;transform:none;filter:none}.motion-ready .progress-visual .bar{transform:none}}
