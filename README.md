@@ -11,6 +11,8 @@ Static HTML, CSS and JavaScript. No build step or application backend. Publish w
 - `CNAME`: custom website domain.
 - `.nojekyll`: serve the static files directly.
 - `privacy/`, `terms/`, `delete-account/`: legal pages (Persian and English in the same HTML; `legal.css`, `legal.js`). The English text is the source. Linked from every page's footer.
+- `sitemap.xml`: canonical public page URLs for search engines. Update it when adding, removing or changing a public page URL; omit fragments and language-toggle variants that share the same URL.
+- `robots.txt`: permits crawling and advertises the sitemap at `https://vazne.app/sitemap.xml`.
 
 The page uses the existing Vazne dumbbell glyph with the owner’s silver/white glass and electric-blue reference direction. Persian uses self-hosted Estedad; Manrope and the Vazirmatn fallback are loaded from Google Fonts. Icons and the animated barbell are local SVG, with no animation library or external icon service. It does not collect form submissions or persist demo data.
 
