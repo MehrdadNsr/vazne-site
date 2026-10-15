@@ -25,7 +25,7 @@ function initVazne() {
     { parent: $('platesLeft'), collar: $('collarLeft'), direction: -1, origin: 241, plates: new Map() },
     { parent: $('platesRight'), collar: $('collarRight'), direction: 1, origin: 559, plates: new Map() }
   ];
-  let lang = 'en', reps = 10, set = 1, logged = false, previousWeight = null;
+  let lang = document.documentElement.lang === 'fa' ? 'fa' : 'en', reps = 10, set = 1, logged = false, previousWeight = null;
   let activePointer = null;
   const number = n => new Intl.NumberFormat(lang === 'fa' ? 'fa-IR' : 'en-US', { maximumFractionDigits: 2 }).format(n);
 
@@ -123,7 +123,6 @@ function initVazne() {
     $('plus').setAttribute('aria-label', lang === 'fa' ? 'زیاد کردن تکرار' : 'Increase reps');
     $('sampleChart').setAttribute('aria-label', lang === 'fa' ? 'نمودار نمونهٔ افزایش وزنه در شش جلسه' : 'Illustrative chart of increasing weight over six sessions');
     $('announcement').textContent = '';
-    document.title = lang === 'fa' ? 'وزنه | هر ست، یک قدم جلوتر' : 'Vazne | Your gym buddy';
     update();
   }
 
@@ -172,7 +171,6 @@ function initVazne() {
   }
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => weight.addEventListener(type, endPointer));
   weight.addEventListener('input', () => { logged = false; update(); });
-  $('language').addEventListener('click', () => setLanguage(lang === 'fa' ? 'en' : 'fa'));
   $('minus').addEventListener('click', () => { reps = Math.max(1, reps - 1); logged = false; update(); });
   $('plus').addEventListener('click', () => { reps = Math.min(30, reps + 1); logged = false; update(); });
   $('save').addEventListener('click', () => {
@@ -188,7 +186,7 @@ function initVazne() {
     }
     update();
   });
-  setLanguage('en');
+  setLanguage(lang);
 
   function initReveals() {
     if (reducedMotion.matches || !('IntersectionObserver' in window)) return;

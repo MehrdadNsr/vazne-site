@@ -61,13 +61,14 @@ class FakeElement {
   }
 }
 
-function environment({ reduced = false, intersection = true } = {}) {
+function environment({ reduced = false, intersection = true, language = 'en' } = {}) {
   const ids = new Map([...html.matchAll(/\bid="([^"]+)"/g)].map(match => [match[1], new FakeElement()]));
   ids.get('weight').value = '60';
   const translatable = [...html.matchAll(/data-i="([^"]+)"[^>]*>([^<]*)/g)].map(match => {
     const node = new FakeElement(); node.dataset.i = match[1]; node.textContent = match[2]; return node;
   });
   const demo = new FakeElement(), root = new FakeElement();
+  root.lang = language;
   const reveal = [new FakeElement(), new FakeElement()];
   const motion = { matches: reduced, addEventListener(name, fn) { this.change = fn; } };
   const timers = new Map(), frames = [];
@@ -116,7 +117,12 @@ test('initial SVG stacks, localization, rep bounds and save flow', () => {
     $('save').dispatch('click');
   }
   assert.equal($('setLabel').textContent, 'Set 1 of 3');
-  $('language').dispatch('click'); assert.equal(env.root.dir, 'rtl'); assert.equal($('weightValue').textContent, '۶۰');
+  const fa = environment({ language: 'fa' });
+  assert.equal(fa.root.dir, 'rtl');
+  assert.equal(fa.ids.get('weightValue').textContent, '۶۰');
+  assert.equal(fa.ids.get('languageLabel').textContent, 'English');
+  assert.match(html, /id="language" href="\/fa\/"/);
+  assert.match(fs.readFileSync(path.join(__dirname, 'fa/index.html'), 'utf8'), /id="language" href="\/"/);
 });
 
 test('rapid additions, removals and reversals do not leave stale plates', () => {

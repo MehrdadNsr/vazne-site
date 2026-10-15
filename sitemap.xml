@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vazne.app/</loc>
-  </url>
-  <url>
-    <loc>https://vazne.app/privacy/</loc>
-  </url>
-  <url>
-    <loc>https://vazne.app/terms/</loc>
-  </url>
-  <url>
-    <loc>https://vazne.app/delete-account/</loc>
-  </url>
+  <url><loc>https://vazne.app/</loc></url>
+  <url><loc>https://vazne.app/fa/</loc></url>
+  <url><loc>https://vazne.app/privacy/</loc></url>
+  <url><loc>https://vazne.app/terms/</loc></url>
+  <url><loc>https://vazne.app/delete-account/</loc></url>
+  <url><loc>https://vazne.app/guides/workout-tracker/</loc></url>
+  <url><loc>https://vazne.app/guides/import-workout-plan/</loc></url>
+  <url><loc>https://vazne.app/guides/track-workout-progress/</loc></url>
+  <url><loc>https://vazne.app/fa/guides/workout-tracker/</loc></url>
+  <url><loc>https://vazne.app/fa/guides/import-workout-plan/</loc></url>
+  <url><loc>https://vazne.app/fa/guides/track-workout-progress/</loc></url>
 </urlset>
