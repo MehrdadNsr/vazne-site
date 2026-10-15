@@ -73,6 +73,7 @@ function environment({ reduced = false, intersection = true } = {}) {
   const timers = new Map(), frames = [];
   let timerId = 0, observer;
   const document = {
+    addEventListener() {},
     documentElement: root,
     getElementById(id) { assert.ok(ids.has(id), `Missing id: ${id}`); return ids.get(id); },
     createElementNS() { return new FakeElement(); },
@@ -101,7 +102,6 @@ test('initial SVG stacks, localization, rep bounds and save flow', () => {
   assert.equal($('platesLeft').children.length, 8);
   assert.equal($('platesRight').children.length, 8);
   assert.equal($('barbellModel').dataset.plateCount, '16');
-  $('language').dispatch('click');
   assert.equal(env.root.lang, 'en');
   assert.equal($('languageLabel').textContent, 'فارسی');
   assert.equal($('weightValue').textContent, '60');

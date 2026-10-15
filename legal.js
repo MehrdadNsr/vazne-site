@@ -1,12 +1,12 @@
 // Language for the legal pages. Both versions are in the HTML (crawlers and reviewers get the full
 // text either way); this only picks which one is shown. Order: ?lang=, the visitor's last choice on
-// this site, then the browser language (Persian browsers get Persian, everyone else English).
+// this site, then English.
 (function () {
   var root = document.documentElement;
   function saved() { try { return localStorage.getItem('vazne-lang'); } catch (e) { return null; } }
   function save(l) { try { localStorage.setItem('vazne-lang', l); } catch (e) {} }
   var q = new URLSearchParams(location.search).get('lang');
-  var lang = q === 'fa' || q === 'en' ? q : saved() === 'fa' || saved() === 'en' ? saved() : /^fa\b/i.test(navigator.language || '') ? 'fa' : 'en';
+  var lang = q === 'fa' || q === 'en' ? q : saved() === 'fa' || saved() === 'en' ? saved() : 'en';
   function apply(l) {
     lang = l;
     root.setAttribute('data-lang', l);
