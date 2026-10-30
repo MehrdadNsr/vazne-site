@@ -2,6 +2,15 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — IFA in the terms, barbell on the tester page
+
+- Terms: new section 8 «Ownership and partners» / «مالکیت و همکاران» (owner's wording, 2026-10-30): Vazne is owned by
+  Mehrdad Khani (Mehrdad Nasrollah Khani); IFA Tech Group (گروه ایفاتک) and its CEO are an indirect partner that advises
+  on general matters, with no ownership or official/legal rights in the app. Sections 8–13 became 9–14; updated date.
+- `/test/`: a small 3D barbell at the top (slowly turning, can be dragged) with a «وزنه چیه؟» link to the home page.
+  The barbell code moved to `assets/barbell.js`, shared with the home page (home verified pixel-identical).
+- Checked: `tools/check.sh --browser`, home before/after style and pixel comparison, barbell framing at 320–1920 px.
+
 ## 2026-10-30 — Cleanup, Arabic and Spanish, first-visit language
 
 - **One look for every page.** Guides, privacy, terms, delete-account and 404 now share the home page's top bar,

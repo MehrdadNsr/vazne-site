@@ -9,7 +9,7 @@ Pages from the `main` branch, repository root**: a push to `main` is live within
 | URL | What | Language |
 |---|---|---|
 | `/`, `/fa/`, `/ar/`, `/es/` | Home page (3D barbell, demo, FAQ, download buttons) | English, Persian, Arabic, Spanish |
-| `/test/` | Tester page: Android closed testing (3 steps), iPhone TestFlight, QR code on computers | Persian (+ short English) — `noindex` |
+| `/test/` | Tester page: small 3D barbell, Android closed testing (3 steps), iPhone TestFlight, QR code on computers | Persian (+ short English) — `noindex` |
 | `/guides/…`, `/fa/guides/…` | Three guides: workout log, plan import, reading progress | English + Persian |
 | `/privacy/`, `/terms/`, `/delete-account/` | Legal pages; both languages in one file, English is binding. Linked from the app and the stores: never move them | English + Persian (`?lang=fa`) |
 | `404.html` | Page not found | English + links to every language |
@@ -41,7 +41,8 @@ src/partials/poster.svg             drawn barbell shown before / instead of the 
 guides/, fa/guides/, privacy/, terms/, delete-account/, 404.html, test/   hand-written pages; their top bar and
                                     footer (between <!-- nav --> and <!-- footer --> markers) are generated
 assets/base.css                     colours, fonts, top bar, language menu, footer — every page
-assets/experience.css, experience.js   home page (three.js loads only if the visitor is not saving data)
+assets/experience.css, experience.js   home page
+assets/barbell.js                   the 3D barbell (home + the small one on /test/); three.js loads only if the visitor is not saving data
 assets/page.css                     guides, legal pages, 404
 assets/test.css, testers.js         tester page and the download buttons
 assets/links.js                     EVERY download / tester link (see below)

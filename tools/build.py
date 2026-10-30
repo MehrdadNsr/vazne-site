@@ -222,6 +222,11 @@ def render_page(path, spec):
         'nav': nav(lang, spec['alt'], tester_page=spec.get('tester_page', False)),
         'footer': footer('fa' if spec.get('tester_page') else lang),
     }
+    if '<!-- barbell -->' in html:  # optional: the small turning barbell (tester page)
+        poster = (SRC / 'partials' / 'poster.svg').read_text(encoding='utf-8').strip()
+        label = get('fa' if lang in ('fa', 'bilingual') else lang, 'hero.poster_label')
+        regions['barbell'] = (f'<div class="mini" data-barbell="idle" role="img" aria-label="{esc(label)}">'
+                              f'<div class="poster">{poster.replace("{{hero.poster_label}}", esc(label))}</div></div>')
     for name, content in regions.items():
         pattern = re.compile(rf'<!-- {name} -->.*?<!-- /{name} -->', re.S)
         if not pattern.search(html):
