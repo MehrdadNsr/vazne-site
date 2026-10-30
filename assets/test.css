@@ -1,0 +1,91 @@
+/* /test/ — tester page. Same tokens as the home pages (assets/experience.css). Mobile first. */
+@font-face{font-family:Estedad;src:url(/Estedad.woff2) format('woff2');font-display:swap}
+:root{--ink:#191d26;--muted:#535a67;--red:#c52235;--paper:#f3f4f6;--line:#d4d9e1;--card:#ffffffc7}
+*{box-sizing:border-box}
+html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;font-family:Estedad,Tahoma,Arial,sans-serif;line-height:1.8;background:radial-gradient(ellipse at 85% 0%,#dce1eb 0%,transparent 45%),radial-gradient(ellipse at 0% 30%,#f4dce0 0%,transparent 40%),var(--paper);background-repeat:no-repeat}
+a{color:inherit}
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+a:focus-visible{outline:2px solid var(--red);outline-offset:4px;border-radius:6px}
+svg{display:block}
+[lang=en]{font-family:Arial,Helvetica,sans-serif}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 20px;border-bottom:1px solid #191d2614}
+.brand{display:flex;direction:ltr;align-items:center;gap:10px;font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none}
+.brand svg{width:28px;color:var(--red)}
+.top-link{font-size:13px;color:var(--muted);text-decoration:none}
+.top-link:hover{color:var(--red)}
+
+.wrap{width:min(1120px,100%);margin:0 auto;padding:0 20px 40px}
+.intro{padding:36px 0 8px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;color:#505967}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
+h1{font-size:clamp(40px,11vw,76px);line-height:1.35;letter-spacing:-.03em;margin:14px 0 10px;font-weight:800}
+h1 span{color:var(--red)}
+.intro p{margin:0;max-width:520px;font-size:16px;color:var(--muted)}
+
+.platforms{display:flex;flex-direction:column;gap:18px;margin-top:28px}
+.platform{background:var(--card);border:1px solid #fff;border-radius:24px;box-shadow:0 12px 40px #2a35410c;padding:22px 18px}
+.platform h2{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-size:24px;letter-spacing:-.02em}
+.platform h2 svg{width:24px;height:24px;flex:none}
+.platform .lead{margin:0 0 14px;font-size:14px;color:var(--muted)}
+.platform .tip{display:none;margin-inline-start:4px;padding:2px 10px;border-radius:99px;background:#faedf0;color:#a91e31;font-size:12px;font-weight:700;vertical-align:middle;letter-spacing:0}
+[data-device=android] .android .tip,[data-device=ios] .ios .tip{display:inline-block}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.step{background:#fff;border:1px solid #e3e7ee;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.step p,.ios-box p{margin:0;font-size:14px;line-height:1.85;color:#454d5a}
+
+.btn{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px;padding:12px 22px;border-radius:99px;background:var(--ink);color:#fff;font-size:16px;font-weight:700;text-decoration:none;transition:transform .2s}
+.btn:hover{background:var(--red);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex:none;transform:scaleX(-1)}
+.btn .ok{display:none}
+.step.done .btn{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px #c9cfd9}
+.step.done .btn:hover{background:#f6f7f9}
+.step.done .btn .ok{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#2e6b4f}
+.step.done .btn .go{display:none}
+.ok svg{transform:none}
+
+.ios-box{display:flex;flex-direction:column;gap:10px}
+.ios-box p a,.help a{color:var(--red);font-weight:700}
+.secondary{font-size:14px}
+.if-appstore{display:none}
+.has-appstore .if-appstore{display:flex}
+.has-appstore .if-testflight{display:none}
+
+.qr-card{display:none}
+.help{margin:26px 0 0;font-size:14px;color:var(--muted)}
+.en{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;line-height:1.7;color:var(--muted)}
+.en h2{font-size:14px;margin:0 0 6px;color:var(--ink)}
+.en p{margin:0}
+
+footer{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;padding:26px 20px;border-top:1px solid #cbd1db;background:#e9ecf1;color:#4c596c;font-size:12px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--red)}
+
+/* The visitor's own platform comes first */
+[data-device=ios] .ios{order:-1}
+
+@media (min-width:860px){
+  .top{height:96px;padding:0 5vw}
+  .wrap{padding:0 5vw 60px}
+  .head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .intro{padding:60px 0 10px}
+  .platform{padding:30px}
+  .steps{grid-template-columns:repeat(3,1fr);gap:14px}
+  .step{padding:16px}
+  .btn{font-size:15px;padding:12px 20px}
+  .ios-box{flex-direction:row;align-items:center;gap:22px}
+  .ios-box .btn{flex:none;min-width:260px}
+  footer{padding:30px 5vw}
+}
+/* Computers (and any wide screen JavaScript could not identify): show the QR code of this page */
+@media (min-width:860px){
+  .qr-card{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:40px;padding:18px 18px 14px;background:#fff;border:1px solid #fff;border-radius:24px;box-shadow:0 12px 40px #2a35410f;text-align:center;width:230px}
+  .qr-card svg{width:180px;height:180px;shape-rendering:crispEdges}
+  .qr-card p{margin:0;font-size:13px;line-height:1.7;color:var(--muted)}
+  .qr-card .url{font-family:Arial,Helvetica,sans-serif;font-weight:700;color:var(--ink);direction:ltr}
+  [data-device=android] .qr-card,[data-device=ios] .qr-card,[data-device=mobile] .qr-card{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

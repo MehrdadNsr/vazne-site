@@ -20,7 +20,7 @@ The demo ranges from 20 to 100 kg in 2.5 kg steps. A 20 kg bar carries equal sta
 
 Run logic and DOM checks with `node --test site.test.cjs`.
 
-Public app download links have deliberately not been added: both platforms are currently in testing. The Google Play badge in the download section is a disabled placeholder: set `PLAY_STORE_URL` in `index.html` to the store link to turn it into a real link (and swap in Google's official badge artwork at launch).
+Testers: `/test/` (Persian, `noindex`, not in the sitemap) walks Android testers through Google Play closed testing and iPhone testers to TestFlight; it shows the visitor's own platform first and a QR code of itself on computers. The home pages' Android button goes to `/test/`, the iPhone button to TestFlight. **All download and tester links live in `assets/links.js`** (`assets/testers.js` applies them); fill `iosAppStore` there when the App Store page is live and every iPhone button switches to it, with TestFlight as a secondary link. The QR code is a fixed SVG: regenerate it with `python3 tools/make_qr.py` if the tester address changes.
 
 Website changes must not modify the `api` DNS record, app repository or app server. Only website apex/www configuration is in scope.
 
