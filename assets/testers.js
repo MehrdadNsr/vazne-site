@@ -4,7 +4,8 @@
  *   the key "ios" means the App Store link when it is set, otherwise TestFlight.
  * - <html> gets data-device="android|ios|mobile|desktop" (CSS puts the right section first)
  *   and the class "has-appstore" once VAZNE_LINKS.iosAppStore is filled.
- * - On /test/, a step the visitor has opened is marked done (kept in this browser only).
+ * - On /test/, a step the visitor has opened is marked done (kept in this browser only); step 3 stays grey until
+ *   steps 1 and 2 were opened (data-after), with a «done them already» way past it.
  * Load it after links.js. It is safe to load in <head>: links are applied once the page is parsed.
  */
 (function () {
@@ -44,11 +45,29 @@
     if (!steps.length) return;
     var done = readDone();
     function mark() {
-      for (var j = 0; j < steps.length; j++) steps[j].classList.toggle('done', !!done[steps[j].getAttribute('data-step')]);
+      for (var j = 0; j < steps.length; j++) {
+        var step = steps[j], link = step.querySelector('a');
+        step.classList.toggle('done', !!done[step.getAttribute('data-step')]);
+        // data-after="1 2": grey until steps 1 and 2 were opened, so nobody jumps straight to installing. Not a lock:
+        // «قبلاً انجامشون دادم» opens it (they may have done them on another phone). Google Play checks the rest.
+        var after = (step.getAttribute('data-after') || '').split(' ').filter(Boolean);
+        var locked = !done['open' + step.getAttribute('data-step')] && after.some(function (n) { return !done[n]; });
+        step.classList.toggle('locked', locked);
+        if (locked) { link.setAttribute('aria-disabled', 'true'); link.setAttribute('tabindex', '-1'); }
+        else { link.removeAttribute('aria-disabled'); link.removeAttribute('tabindex'); }
+      }
     }
     for (var k = 0; k < steps.length; k++) {
       steps[k].querySelector('a').addEventListener('click', function (event) {
-        done[event.currentTarget.closest('[data-step]').getAttribute('data-step')] = 1;
+        var step = event.currentTarget.closest('[data-step]');
+        if (step.classList.contains('locked')) { event.preventDefault(); return; }
+        done[step.getAttribute('data-step')] = 1;
+        saveDone(done);
+        mark();
+      });
+      var unlock = steps[k].querySelector('.unlock');
+      if (unlock) unlock.addEventListener('click', function (event) {
+        done['open' + event.currentTarget.closest('[data-step]').getAttribute('data-step')] = 1;
         saveDone(done);
         mark();
       });

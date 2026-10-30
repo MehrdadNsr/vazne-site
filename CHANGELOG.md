@@ -2,6 +2,14 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Tester page step 3; who is who in the terms
+
+- `/test/`: «۳. نصب از Google Play» stays grey until steps 1 and 2 were opened in this browser, with «اول مرحله‌ی ۱ و ۲ رو بزن…» and
+  a «قبلاً انجامشون دادم» link past it (not a lock: Google Play itself refuses non-testers). New line under it: without joining
+  the group and turning the test on, Google Play won't install.
+- Terms §8 (owner, 2026-10-30): Vazne is a product of TrAfactor AI Studio, owned by Mehrdad Khani; presented in collaboration
+  with IFA Group (CEO Seyed Abbas Nazari), advice and consultation only, no rights in the app. One name, no brackets.
+
 ## 2026-10-30 — Terms: TrAfactor AI Studio
 
 - Terms §8 (owner, 2026-10-30): Vazne is presented by TrAfactor AI Studio («استودیو هوش مصنوعی ترافکتور») in collaboration
