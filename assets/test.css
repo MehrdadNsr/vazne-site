@@ -42,6 +42,12 @@ svg{display:block}
 .step.locked .btn{background:#e6e9ee;color:#8a919d;box-shadow:none;cursor:not-allowed;transform:none}
 .lock-note{display:none;font-weight:700}
 .step.locked .lock-note{display:block;color:var(--ink)}
+.fix summary{cursor:pointer;width:fit-content;font-size:14px;font-weight:700;color:var(--red)}
+.fix p+ol{margin:6px 0}
+.fix ol{padding-inline-start:22px;list-style:persian;font-size:14px;line-height:1.85;color:#454d5a}
+.fix li+li{margin-top:4px}
+.fix a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.fix[open] summary{margin-bottom:6px}
 .unlock{display:inline;margin:0;padding:0;border:0;background:none;color:var(--red);font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .step.done .btn{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px #c9cfd9}
 .step.done .btn:hover{background:#f6f7f9}

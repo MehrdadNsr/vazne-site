@@ -2,6 +2,15 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Tester page: what to do on error 403 at step 2
+
+- `/test/` (owner, 2026-10-30): under step 2, a closed «خطای ۴۰۳ دیدی؟» box with the owner's steps: VPN on with a server
+  outside Iran (Europe or Canada), restart the browser or use a private tab so the cached 403 page isn't shown, open the
+  testing link again (`data-link="androidOptIn"`), install with the VPN still on; still 403 → change the server or VPN.
+  Same steps in the English summary. Cache version `20261030c`.
+- Checked: `tools/check.sh --browser` (all passed); screenshots with the box open at 390 px and 1280 px; the extra link does
+  not mark step 2 as done.
+
 ## 2026-10-30 — Tester page: VPN note for Android testers in Iran
 
 - `/test/` (owner, 2026-10-30): a note at the top of the Android steps: from Iran, without a VPN you can't join the Google
