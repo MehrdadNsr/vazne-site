@@ -2,6 +2,16 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Tester page: TestFlight steps and the invite code
+
+- Owner, 2026-10-30: iPhone testers install TestFlight, then don't know what to do next. The iPhone box (`/test/` and
+  `/fa/test/`) now says: 1) install TestFlight from the App Store if you don't have it, 2) come back and tap «Install with
+  TestFlight» again, then Accept and Install; and if TestFlight asks for a code (Redeem), the code with a copy button. The
+  code is not typed by hand: `assets/testers.js` takes it from the end of `iosTestFlight` in `assets/links.js`
+  (`[data-tf-code]`, `[data-copy-tf]`); `tests/test_site.py` checks the HTML fallback against links.js.
+- Checked: `tools/check.sh` (all passed); Chromium (iPhone 14 and 1280 px, en and fa): code shown, copy puts it on the
+  clipboard, button says «کپی شد» / "Copied"; screenshots.
+
 ## 2026-10-30 — Rule 12: Persian and English on every page; Iran goes to Persian
 
 - Owner, 2026-10-30: every page in both Persian and English, the language menu at the top, and visitors in Iran see Persian,

@@ -65,6 +65,14 @@ svg{display:block}
 .apk-after{flex-direction:column;gap:8px;padding:12px 14px;border-radius:14px;border-inline-start:3px solid var(--red);background:#faedf0}
 .apk.opened .apk-after{display:flex}
 .ios-box{display:flex;flex-direction:column;gap:10px}
+.ios-help{display:flex;flex-direction:column;gap:8px}
+.ios-help ol{margin:0;padding-inline-start:22px;font-size:14px;line-height:1.85;color:#454d5a}
+[dir=rtl] .ios-help ol{list-style:persian}
+.ios-help li+li{margin-top:4px}
+.ios-help li a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.tf-code{display:inline-block;padding:1px 10px;border-radius:8px;background:var(--soft);font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:15px;color:var(--ink);user-select:all}
+.copy{margin-inline-start:4px;padding:2px 12px;border:0;border-radius:99px;background:var(--ink);color:#fff;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.copy:hover{background:var(--red)}
 .ios-box p a,.help a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .secondary{font-size:14px}
 .if-appstore{display:none}
@@ -90,7 +98,7 @@ svg{display:block}
   .steps{grid-template-columns:repeat(3,1fr);gap:14px}
   .step{padding:16px}
   .btn{font-size:15px;padding:12px 20px}
-  .ios-box{flex-direction:row;align-items:center;gap:22px}
+  .ios-box{flex-direction:row;align-items:flex-start;gap:22px}
   .apk{padding:16px}
   .apk .btn{align-self:flex-start;min-width:320px}
   .ios-box .btn{flex:none;min-width:260px}

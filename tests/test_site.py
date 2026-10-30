@@ -141,6 +141,8 @@ for path, page in pages.items():
         expected = links['iosAppStore'] or links['iosTestFlight'] if key == 'ios' else links.get(key)
         check(attrs.get('href') == expected, f'{path.relative_to(ROOT)}: data-link={key} href {attrs.get("href")} != links.js {expected}')
 for path, text in texts.items():
+    for code in re.findall(r'data-tf-code[^>]*>(\w+)<', text):
+        check(links['iosTestFlight'].endswith('/' + code), f'{path.relative_to(ROOT)}: shown TestFlight code {code} is not the one in links.js')
     for code in re.findall(r'testflight\.apple\.com/join/(\w+)', text):
         check(links['iosTestFlight'].endswith('/' + code), f'{path.relative_to(ROOT)}: TestFlight code {code} is not the one in links.js')
 for home_lang, home in HOMES.items():
