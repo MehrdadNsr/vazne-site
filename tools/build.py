@@ -17,11 +17,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'src'
 SITE = 'https://vazne.app'
-VERSION = '20261030'  # bump to make browsers fetch changed CSS/JS
+VERSION = '20261031'  # bump to make browsers fetch changed CSS/JS
 
 LANGS = ['en', 'fa', 'ar', 'es']  # order of the language menu
 RTL = {'fa', 'ar'}
 HOME = {'en': '/', 'fa': '/fa/', 'ar': '/ar/', 'es': '/es/'}
+TESTER = {'en': '/test/?lang=en', 'fa': '/fa/test/'}
 
 # Pages other than the home pages. path -> languages it exists in (language -> URL path).
 # 'bilingual' pages hold English and Persian in one HTML (legal.js shows one); their chrome carries both.
@@ -36,9 +37,12 @@ PAGES = {
     'terms/index.html': {'lang': 'bilingual', 'alt': {'en': '/terms/?lang=en', 'fa': '/terms/?lang=fa'}},
     'delete-account/index.html': {'lang': 'bilingual', 'alt': {'en': '/delete-account/?lang=en', 'fa': '/delete-account/?lang=fa'}},
     '404.html': {'lang': 'en', 'alt': HOME},
-    'test/index.html': {'lang': 'fa', 'alt': {}, 'tester_page': True},
+    # Tester page: English at /test/; lang.js sends Iran's time zone (or a saved Persian choice) to /fa/test/,
+    # which alone has the VPN, error-403 and direct-APK help (owner, 2026-10-30).
+    'test/index.html': {'lang': 'en', 'alt': TESTER, 'tester_page': True},
+    'fa/test/index.html': {'lang': 'fa', 'alt': TESTER, 'tester_page': True},
 }
-# Pages in the sitemap besides the home pages (the tester page and 404 are left out on purpose).
+# Pages in the sitemap besides the home pages (the tester pages and 404 are left out on purpose).
 SITEMAP = [
     {'en': '/guides/workout-tracker/', 'fa': '/fa/guides/workout-tracker/'},
     {'en': '/guides/import-workout-plan/', 'fa': '/fa/guides/import-workout-plan/'},
@@ -89,6 +93,11 @@ def legal(lang, path):
     return path if lang in ('en', 'bilingual') else f'{path}?lang={"fa" if lang == "fa" else "en"}'
 
 
+def tester_url(lang):
+    """Persian pages link straight to the Persian tester page; the rest to /test/ (English, or Persian for Iran)."""
+    return '/fa/test/' if lang == 'fa' else '/test/'
+
+
 def lang_menu(lang, alternates):
     if not alternates:
         return ''
@@ -121,7 +130,7 @@ def nav(lang, alternates, home_page=False, tester_page=False):
                         for anchor, key in (('', 'chrome.about'), ('#faq', 'chrome.faq')) for c in ('en', 'fa'))
     else:
         links = f'<a href="{home}">{t(lang, "chrome.about")}</a><a href="{home}#faq">{t(lang, "chrome.faq")}</a>'
-    tester = '' if tester_page else f'<a class="tag tester-tag" href="/test/">{t(lang, "chrome.tester")}</a>'
+    tester = '' if tester_page else f'<a class="tag tester-tag" href="{tester_url(lang)}">{t(lang, "chrome.tester")}</a>'
     label = get('en' if lang == 'bilingual' else lang, 'chrome.nav_label')
     home_label = get('en' if lang == 'bilingual' else lang, 'chrome.home_label')
     return (f'<nav class="topbar" aria-label="{esc(label)}">'
@@ -143,7 +152,7 @@ def footer(lang, home_page=False):
             f'<a href="{legal(lang, "/terms/")}">{t(lang, "chrome.terms")}</a>'
             f'<a href="{legal(lang, "/delete-account/")}">{t(lang, "chrome.delete")}</a>'
             f'<a href="{guide}"{guide_attr}>{t(lang, "chrome.guides")}</a>'
-            f'<a href="/test/">{t(lang, "chrome.testers")}</a>'
+            f'<a href="{tester_url(lang)}">{t(lang, "chrome.testers")}</a>'
             f'<a href="mailto:support@vazne.app">support@vazne.app</a>'
             f'<a href="https://mehrdadkhani.com/" rel="author">{t(lang, "chrome.made_by")}</a></div>'
             f'<div class="footer-langs">{languages}</div></footer>')
@@ -189,7 +198,7 @@ def render_home(lang):
         'auto_language': AUTO_LANGUAGE.format(v=VERSION) if lang == 'en' else f'<script src="/assets/lang.js?v={VERSION}"></script>',
         'nav': nav(lang, HOME, home_page=True), 'footer': footer(lang, home_page=True),
         'arrow': ICON['arrow'], 'arrow_icon': ICON['arrow'], 'check_icon': ICON['check'],
-        'android_icon': ICON['android'], 'phone_icon': ICON['phone'],
+        'android_icon': ICON['android'], 'phone_icon': ICON['phone'], 'tester_url': tester_url(lang),
         'hero.plates_4': get(lang, 'hero.plates').replace('{n}', digits(lang, 4)),
     }
     for n in ['01', '02', '03', '8', '10', '20', '50', '60', '100']:
@@ -220,7 +229,7 @@ def render_page(path, spec):
     lang = spec['lang']
     regions = {
         'nav': nav(lang, spec['alt'], tester_page=spec.get('tester_page', False)),
-        'footer': footer('fa' if spec.get('tester_page') else lang),
+        'footer': footer(lang),
     }
     if '<!-- barbell -->' in html:  # optional: the small turning barbell (tester page)
         poster = (SRC / 'partials' / 'poster.svg').read_text(encoding='utf-8').strip()

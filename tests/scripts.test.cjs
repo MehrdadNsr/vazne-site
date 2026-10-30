@@ -32,7 +32,7 @@ function runLang({ tz = 'America/Toronto', languages = ['en-US'], ua = 'Mozilla/
     localStorage,
     URL,
     document: {
-      currentScript: { hasAttribute: (name) => auto && name === 'data-auto-language' },
+      currentScript: { hasAttribute: (name) => (auto === true && name === 'data-auto-language') || (auto === 'tester' && name === 'data-tester-language') },
       referrer,
       addEventListener() {},
       querySelectorAll: () => [],
@@ -42,6 +42,19 @@ function runLang({ tz = 'America/Toronto', languages = ['en-US'], ua = 'Mozilla/
   vm.runInNewContext(LANG_JS, ctx);
   return { redirected, api: ctx.window.vazneLang, localStorage };
 }
+
+test('tester page: Persian only for Iran time zone or a saved Persian choice', () => {
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Tehran' }).redirected, '/fa/test/');
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Tehran', referrer: 'https://vazne.app/' }).redirected, '/fa/test/');
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'America/Toronto', saved: 'fa' }).redirected, '/fa/test/');
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Kabul' }).redirected, null);
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Riyadh' }).redirected, null);
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'America/Toronto', languages: ['fa-IR'] }).redirected, null);
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Tehran', saved: 'en' }).redirected, null);
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Tehran', search: '?lang=en' }).redirected, null);
+  assert.strictEqual(runLang({ auto: 'tester', tz: 'Asia/Tehran', ua: 'Mozilla/5.0 (compatible; Googlebot/2.1)' }).redirected, null);
+  assert.strictEqual(runLang({ auto: 'tester', search: '?tz=Asia/Tehran', saved: 'en' }).redirected, '/fa/test/');
+});
 
 test('first visit goes to the region language', () => {
   assert.strictEqual(runLang({ tz: 'Asia/Tehran' }).redirected, '/fa/');

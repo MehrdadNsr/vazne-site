@@ -9,7 +9,7 @@ Pages from the `main` branch, repository root**: a push to `main` is live within
 | URL | What | Language |
 |---|---|---|
 | `/`, `/fa/`, `/ar/`, `/es/` | Home page (3D barbell, demo, FAQ, download buttons) | English, Persian, Arabic, Spanish |
-| `/test/` | Tester page: small 3D barbell, Android closed testing (3 steps), iPhone TestFlight, QR code on computers | Persian (+ short English) — `noindex` |
+| `/test/`, `/fa/test/` | Tester page: small 3D barbell, Android closed testing (3 steps), iPhone TestFlight, QR code on computers. The Persian page alone adds the help for Iran: VPN note, error 403 at step 2, direct APK download. `/test/` sends Iran's time zone (or a saved Persian choice) to `/fa/test/` (`assets/lang.js`, `data-tester-language`) | English, Persian — `noindex` |
 | `/guides/…`, `/fa/guides/…` | Three guides: workout log, plan import, reading progress | English + Persian |
 | `/privacy/`, `/terms/`, `/delete-account/` | Legal pages; both languages in one file, English is binding. Linked from the app and the stores: never move them | English + Persian (`?lang=fa`) |
 | `404.html` | Page not found | English + links to every language |
@@ -51,7 +51,7 @@ assets/lang.js                      language menu, saved choice, first-visit lan
 assets/legal.js                     picks English or Persian on the legal pages
 assets/three-0.160.1.min.js         three.js (MIT, assets/THREE-LICENSE.txt)
 assets/Estedad.woff2                Persian/Arabic font (OFL, assets/Estedad-OFL.txt); English uses Arial
-sitemap.xml                         GENERATED (with hreflang alternates); /test/ and 404 are left out on purpose
+sitemap.xml                         GENERATED (with hreflang alternates); /test/, /fa/test/ and 404 are left out on purpose
 tools/build.py                      builds the generated parts;  tools/check.sh  runs every check
 tools/make_qr.py, render_social_card.py   QR code on /test/, social-card.png (link previews)
 tests/                              test_site.py (links, SEO, translations), scripts.test.cjs (lang.js, testers.js)
@@ -66,7 +66,7 @@ tests/                              test_site.py (links, SEO, translations), scr
 - **New Android build → new APK on /test/:** in the app repo build the `website-apk` profile too
   (`npx eas-cli@latest build -p android --profile website-apk`; arm64-only APK, channel `production`). Check it (no keys
   inside), put it in `download/` as `vazne-<version>.apk`, delete the old file, update `androidApk` in `assets/links.js`,
-  the fallback `href` and the size on the button in `test/index.html` (Persian and English). OTA updates reach it on their
+  the fallback `href` and the size on the button in `fa/test/index.html` (the English page has no APK). OTA updates reach it on their
   own; only a new build needs a new file.
 - **Home page text:** edit `src/i18n/<lang>.json` (keep the same keys in all four), then `python3 tools/build.py`.
 - **Home page layout:** `src/home.html` (+ `assets/experience.css`), then build.

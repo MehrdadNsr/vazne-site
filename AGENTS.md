@@ -22,8 +22,10 @@ language in step.
 7. **Light and private.** No third-party scripts, trackers, analytics or web fonts (mobile data is expensive in Iran and
    the privacy policy promises no tracking). New images: compressed, with width/height. Big things load only when
    needed (three.js is skipped when the visitor saves data).
-8. **Indexing:** `/test/` and `404.html` are `noindex` and stay out of the sitemap; never `Disallow` them in robots.txt.
-   No redirects by language except the first-visit rule on `/` in `assets/lang.js`.
+8. **Indexing:** `/test/`, `/fa/test/` and `404.html` are `noindex` and stay out of the sitemap; never `Disallow` them in
+   robots.txt. No redirects by language except two rules in `assets/lang.js`: the first visit on `/`, and `/test/` →
+   `/fa/test/` for Iran's time zone or a saved Persian choice (owner, 2026-10-30). The Iran-only help (VPN, error 403,
+   direct APK) lives on `/fa/test/` only.
 9. **Legal pages** (`/privacy/`, `/terms/`, `/delete-account/`) are linked from the app and the store listings: never move
    or rename them. Their wording comes from the owner / the app repository's legal docs; do not change what they mean.
 10. **Never publish secrets** (keys, tokens, .env, store or console links). Everything in this repo is public at

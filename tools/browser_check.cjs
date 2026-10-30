@@ -16,7 +16,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream' });
   res.end(fs.readFileSync(file));
 });
-const PAGES = ['/', '/fa/', '/ar/', '/es/', '/test/', '/guides/workout-tracker/', '/fa/guides/import-workout-plan/', '/privacy/', '/terms/?lang=fa', '/delete-account/', '/missing-page'];
+const PAGES = ['/', '/fa/', '/ar/', '/es/', '/test/', '/fa/test/', '/guides/workout-tracker/', '/fa/guides/import-workout-plan/', '/privacy/', '/terms/?lang=fa', '/delete-account/', '/missing-page'];
 const SETUPS = { android: devices['Pixel 7'], iphone: devices['iPhone 14'], desktop: { viewport: { width: 1440, height: 900 } } };
 
 server.listen(0, '127.0.0.1', async () => {
@@ -42,7 +42,7 @@ server.listen(0, '127.0.0.1', async () => {
       const bad = [];
       if (errors.length) bad.push('errors: ' + errors.join(' | '));
       if (info.overflow > 0) bad.push(`scrolls sideways by ${info.overflow}px`);
-      if (url === '/test/' && name !== 'desktop' && info.first !== (name === 'iphone' ? 'iphone' : 'android')) bad.push('wrong section first: ' + info.first);
+      if (url.endsWith('/test/') && name !== 'desktop' && info.first !== (name === 'iphone' ? 'iphone' : 'android')) bad.push('wrong section first: ' + info.first);
       await page.screenshot({ path: `${out}/${name}${url.replace(/[/?=]/g, '_')}.png`, fullPage: true });
       console.log(`${bad.length ? 'FAIL' : 'ok  '} ${name.padEnd(8)} ${url}${bad.length ? '  ' + bad.join('; ') : ''}`);
       problems += bad.length;

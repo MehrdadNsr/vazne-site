@@ -2,6 +2,19 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Tester page in English; Persian only for Iran
+
+- Owner, 2026-10-30: friends abroad saw the tester page in Persian only. `/test/` is now English (same steps, no VPN /
+  error-403 / APK help, which only applies to Iran) and the Persian page moved to `/fa/test/` with all of it. `assets/lang.js`
+  (`data-tester-language` on `/test/`) sends Iran's time zone (`Asia/Tehran`) or a visitor who picked Persian on this site to
+  `/fa/test/`; everyone else stays on English; `?lang=en` and crawlers never move. Time zone rather than IP address: GitHub
+  Pages can't see the IP without a third-party service, and Iranians on a VPN would get English by IP.
+- Language menu on both pages; the Persian home, its FAQ, nav and footer link straight to `/fa/test/`; the English summary
+  box at the bottom of the Persian page is gone. LTR arrows on the English page. Asset version `20261031`.
+- Checked: `tools/check.sh --browser` (new tests: tester redirect rules in `tests/scripts.test.cjs`; English page without
+  the Iran-only help, Persian page with it, both `noindex`); Chromium with time zones Tehran → `/fa/test/`, Toronto / London /
+  Riyadh → `/test/`, Tehran + `?lang=en` → `/test/`, `#iphone` kept; screenshots at 390 px and 1280 px.
+
 ## 2026-10-30 — Tester page: direct APK download
 
 - `/test/` (owner, 2026-10-30): at the end of the Android steps, «موفق نشدی نصبش کنی؟» with a direct download of the app

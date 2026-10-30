@@ -93,8 +93,12 @@ for home_lang, home in HOMES.items():
 # 3. Robots rules
 robots = (ROOT / 'robots.txt').read_text()
 check('Sitemap: ' + SITE + '/sitemap.xml' in robots, 'robots.txt must point to the sitemap')
-check('Disallow: /test' not in robots, 'do not Disallow /test (crawlers must see its noindex)')
-for path in ['test/index.html', '404.html']:
+check('Disallow: /test' not in robots and 'Disallow: /fa/test' not in robots, 'do not Disallow the tester pages (crawlers must see their noindex)')
+# Tester pages (owner, 2026-10-30): the Iran-only help (VPN, error 403, direct APK) is on the Persian page only
+check(not re.search(r'VPN|class="apk"|class="fix"|class="notice"', texts[ROOT / 'test/index.html']), 'test/: the English page must not carry the Iran-only help')
+check(all(k in texts[ROOT / 'fa/test/index.html'] for k in ('VPN', 'class="apk"', 'class="fix"')), 'fa/test/: VPN, 403 and APK help missing')
+check('data-tester-language' in texts[ROOT / 'test/index.html'], 'test/: lang.js must carry data-tester-language')
+for path in ['test/index.html', 'fa/test/index.html', '404.html']:
     check(any('noindex' in a.get('content', '') for a in pages[ROOT / path].find('meta', name='robots')), f'{path} needs noindex')
 
 # 4. Every local link and asset exists; fragments exist; external new tabs are safe
@@ -137,9 +141,10 @@ for path, page in pages.items():
 for path, text in texts.items():
     for code in re.findall(r'testflight\.apple\.com/join/(\w+)', text):
         check(links['iosTestFlight'].endswith('/' + code), f'{path.relative_to(ROOT)}: TestFlight code {code} is not the one in links.js')
-for home in HOMES.values():
+for home_lang, home in HOMES.items():
     text = texts[local(home)]
-    check('class="store" href="/test/"' in text, f'{home}: Android button must go to /test/')
+    tester = '/fa/test/' if home_lang == 'fa' else '/test/'
+    check(f'class="store" href="{tester}"' in text, f'{home}: Android button must go to {tester}')
     check('class="store" data-link="ios"' in text, f'{home}: iPhone button must use the ios link')
 
 # 6. Translations complete (same keys in every language)

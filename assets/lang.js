@@ -10,6 +10,9 @@
  *   English is sent to /fa/, /ar/ or /es/. Never for crawlers, never when they came from another page of this site,
  *   never once they have picked a language (links to / carry ?lang=en). Test it with ?tz=Asia/Riyadh (pretend time
  *   zone) or a private window.
+ * - On the English tester page /test/ (script tag with data-tester-language): Persian (/fa/test/, with the VPN and direct-APK
+ *   help) only for Iran's time zone (Asia/Tehran) or a visitor who picked Persian on this site; everyone else stays on
+ *   English (owner, 2026-10-30). Never for crawlers or when the address carries ?lang=.
  * - Clicking any [data-set-lang] link saves that choice; language menus close on outside click or Escape.
  */
 (function () {
@@ -50,15 +53,22 @@
   window.vazneLang = { detect: detect, saved: saved, save: save };
 
   var script = document.currentScript;
-  if (script && script.hasAttribute('data-auto-language')) {
+  var auto = script && script.hasAttribute('data-auto-language');
+  var tester = script && script.hasAttribute('data-tester-language');
+  if (auto || tester) {
     var bot = /googlebot|google-|googleother|storebot|bingbot|yandex|duckduckbot|applebot|baiduspider|petalbot|semrush|ahrefs|mj12bot|dotbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|discordbot|telegrambot|^whatsapp\/|crawler|spider|slurp|archiver|lighthouse|headlesschrome/i
       .test(navigator.userAgent || '');
     var internal = false;
     try { internal = !!document.referrer && new URL(document.referrer).host === location.host; } catch (e) { /* ignore */ }
     var asked = /[?&]lang=(en|fa|ar|es)\b/.exec(location.search);
     if (asked) save(asked[1]); // language links to / carry ?lang=en, so the choice holds even without storage
-    var lang = asked ? asked[1] : detect();
-    if (!bot && !internal && lang !== 'en') location.replace(SUPPORTED[lang] + location.hash);
+    if (auto) {
+      var lang = asked ? asked[1] : detect();
+      if (!bot && !internal && lang !== 'en') location.replace(SUPPORTED[lang] + location.hash);
+    } else if (!bot && !asked) {
+      var choice = forced ? null : saved();
+      if (choice === 'fa' || (!choice && /^Asia\/Tehran$/.test(timeZone()))) location.replace('/fa/test/' + location.hash);
+    }
   }
 
   document.addEventListener('click', function (event) {
