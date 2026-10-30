@@ -27,6 +27,7 @@ svg{display:block}
 .platform h2{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-size:24px}
 .platform h2 svg{width:24px;height:24px;flex:none}
 .platform .lead{margin:0 0 14px;font-size:14px;color:var(--muted)}
+.notice{margin:0 0 14px;padding:12px 14px;border-radius:14px;border-inline-start:3px solid var(--red);background:#faedf0;font-size:14px;line-height:1.85;color:var(--ink)}
 .platform .tip{display:none;margin-inline-start:4px;padding:2px 10px;border-radius:99px;background:#faedf0;color:#a91e31;font-size:12px;font-weight:700;vertical-align:middle;letter-spacing:0}
 [data-device=android] .android .tip,[data-device=ios] .ios .tip{display:inline-block}
 

@@ -2,6 +2,13 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Tester page: VPN note for Android testers in Iran
+
+- `/test/` (owner, 2026-10-30): a note at the top of the Android steps: from Iran, without a VPN you can't join the Google
+  group and Google Play doesn't open, so turn a VPN on first and then do all three steps. Same sentence added to the
+  English summary. New `.notice` style in `assets/test.css` (existing crimson tint and `--red`), cache version `20261030b`.
+- Checked: `tools/check.sh --browser` (all passed); screenshots of the Android section at 390 px and 1280 px.
+
 ## 2026-10-30 — Tester page step 3; who is who in the terms
 
 - `/test/`: «۳. نصب از Google Play» stays grey until steps 1 and 2 were opened in this browser, with «اول مرحله‌ی ۱ و ۲ رو بزن…» and
