@@ -25,7 +25,10 @@
 
   var STORE = 'vazne-test-steps';
   function readDone() {
-    try { return JSON.parse(localStorage.getItem(STORE) || '{}') || {}; } catch (e) { return {}; }
+    try {
+      var v = JSON.parse(localStorage.getItem(STORE) || '{}');
+      return v && typeof v === 'object' ? v : {};
+    } catch (e) { return {}; }
   }
   function saveDone(done) {
     try { localStorage.setItem(STORE, JSON.stringify(done)); } catch (e) { /* private mode: no memory, still works */ }
