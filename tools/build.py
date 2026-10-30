@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'src'
 SITE = 'https://vazne.app'
-VERSION = '20261031'  # bump to make browsers fetch changed CSS/JS
+VERSION = '20261032'  # bump to make browsers fetch changed CSS/JS
 
 LANGS = ['en', 'fa', 'ar', 'es']  # order of the language menu
 RTL = {'fa', 'ar'}

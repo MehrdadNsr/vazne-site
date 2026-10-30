@@ -9,7 +9,7 @@ Pages from the `main` branch, repository root**: a push to `main` is live within
 | URL | What | Language |
 |---|---|---|
 | `/`, `/fa/`, `/ar/`, `/es/` | Home page (3D barbell, demo, FAQ, download buttons) | English, Persian, Arabic, Spanish |
-| `/test/`, `/fa/test/` | Tester page: small 3D barbell, Android closed testing (3 steps), iPhone TestFlight, QR code on computers. The Persian page alone adds the help for Iran: VPN note, error 403 at step 2, direct APK download. `/test/` sends Iran's time zone (or a saved Persian choice) to `/fa/test/` (`assets/lang.js`, `data-tester-language`) | English, Persian — `noindex` |
+| `/test/`, `/fa/test/` | Tester page: small 3D barbell, Android closed testing (3 steps), iPhone TestFlight, QR code on computers. The Persian page alone adds the help for Iran: VPN note, error 403 at step 2, direct APK download. `/test/` sends Iran's time zone (or a saved Persian choice) to `/fa/test/` (`assets/lang.js`, `data-persian-page`; AGENTS.md rule 12) | English, Persian — `noindex` |
 | `/guides/…`, `/fa/guides/…` | Three guides: workout log, plan import, reading progress | English + Persian |
 | `/privacy/`, `/terms/`, `/delete-account/` | Legal pages; both languages in one file, English is binding. Linked from the app and the stores: never move them | English + Persian (`?lang=fa`) |
 | `404.html` | Page not found | English + links to every language |
@@ -73,7 +73,9 @@ tests/                              test_site.py (links, SEO, translations), scr
 - **Top bar / footer / language menu:** `tools/build.py` (`nav()`, `footer()`) + `assets/base.css`, then build.
 - **A guide or legal page:** edit the HTML directly (outside the markers). Legal text comes from the owner; keep the
   English and Persian versions saying the same thing and update "Last updated".
-- **A new page:** copy a guide, add it to `PAGES` (and `SITEMAP` if it should be indexed) in `tools/build.py`, build.
+- **A new page:** write it in English and Persian (AGENTS.md rule 12): copy a guide pair, add both to `PAGES` (and
+  `SITEMAP` if they should be indexed) in `tools/build.py`, put `data-persian-page="/fa/…"` on the English page's lang.js
+  tag, add the pair to the twin check in `tests/test_site.py`, build.
 
 ## Checking and publishing
 

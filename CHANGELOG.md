@@ -2,6 +2,17 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Rule 12: Persian and English on every page; Iran goes to Persian
+
+- Owner, 2026-10-30: every page in both Persian and English, the language menu at the top, and visitors in Iran see Persian,
+  everyone else English. Written down as AGENTS.md rule 12. The English guides now send Iran's time zone (or a saved
+  Persian choice) to their Persian twins, like `/test/` (`data-persian-page` on the lang.js tag; replaces
+  `data-tester-language`). Persian addresses never move. The 404 page gained a Persian line. The English tester page keeps
+  the three Android steps and the iPhone step; only the Iran-only help (VPN, error 403, direct APK) is Persian-only.
+- Checked: `tools/check.sh --browser` (new: every English page with a Persian twin carries `data-persian-page`; lang.js unit
+  tests for guides); Chromium: Tehran → `/fa/guides/workout-tracker/` and `/fa/test/`, Toronto stays, `?lang=en` stays,
+  `/fa/test/` never moves; 404 screenshot at 390 px.
+
 ## 2026-10-30 — Tester page in English; Persian only for Iran
 
 - Owner, 2026-10-30: friends abroad saw the tester page in Persian only. `/test/` is now English (same steps, no VPN /

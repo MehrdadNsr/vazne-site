@@ -23,12 +23,17 @@ language in step.
    the privacy policy promises no tracking). New images: compressed, with width/height. Big things load only when
    needed (three.js is skipped when the visitor saves data).
 8. **Indexing:** `/test/`, `/fa/test/` and `404.html` are `noindex` and stay out of the sitemap; never `Disallow` them in
-   robots.txt. No redirects by language except two rules in `assets/lang.js`: the first visit on `/`, and `/test/` →
-   `/fa/test/` for Iran's time zone or a saved Persian choice (owner, 2026-10-30). The Iran-only help (VPN, error 403,
-   direct APK) lives on `/fa/test/` only.
+   robots.txt. No redirects by language except in `assets/lang.js`: the first visit on `/`, and rule 12.
 9. **Legal pages** (`/privacy/`, `/terms/`, `/delete-account/`) are linked from the app and the store listings: never move
    or rename them. Their wording comes from the owner / the app repository's legal docs; do not change what they mean.
 10. **Never publish secrets** (keys, tokens, .env, store or console links). Everything in this repo is public at
     vazne.app/<path>.
 11. **Record every change** in `CHANGELOG.md` (date, what, why, how checked), and update README.md when a page, file or
     rule changes.
+12. **Persian and English, always (owner, 2026-10-30).** Every page exists in both: write a Persian page and you write its
+    English twin too, and the other way round (Arabic and Spanish only where they already exist). Every page has the
+    language menu in the top bar. The English address is the one to share: it sends visitors in Iran to the Persian twin
+    and everyone else stays on English (`data-persian-page="/fa/…"` on the English page's lang.js tag; Iran = time zone
+    `Asia/Tehran` or a saved Persian choice; never crawlers or `?lang=`). Time zone, not IP: GitHub Pages can't see the IP
+    without a third-party service (rule 7), and Iranians on a VPN would get English by IP. Persian addresses never move.
+    Help that only applies to Iran (VPN, error 403, direct APK) goes on the Persian page only.

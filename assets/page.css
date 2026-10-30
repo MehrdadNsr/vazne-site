@@ -54,7 +54,7 @@ html[data-lang=fa] .doc[lang=en], html[data-lang=en] .doc[lang=fa] { display: no
 .not-found { text-align: center; padding-top: 90px; }
 .not-found .code { font-family: Arial, Helvetica, sans-serif; font-size: clamp(90px, 18vw, 180px); font-weight: 800; letter-spacing: -.07em; line-height: 1; color: #dfe3ea; }
 .not-found ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin: 26px 0 0; padding: 0; list-style: none; }
-.not-found li a:lang(fa), .not-found li a:lang(ar) { font-family: Estedad, Tahoma, Arial, sans-serif; }
+.not-found li a:lang(fa), .not-found li a:lang(ar), .not-found p:lang(fa) { font-family: Estedad, Tahoma, Arial, sans-serif; }
 
 @media (max-width: 800px) {
   .page { padding: 36px 6vw 70px; }

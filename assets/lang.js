@@ -10,9 +10,10 @@
  *   English is sent to /fa/, /ar/ or /es/. Never for crawlers, never when they came from another page of this site,
  *   never once they have picked a language (links to / carry ?lang=en). Test it with ?tz=Asia/Riyadh (pretend time
  *   zone) or a private window.
- * - On the English tester page /test/ (script tag with data-tester-language): Persian (/fa/test/, with the VPN and direct-APK
- *   help) only for Iran's time zone (Asia/Tehran) or a visitor who picked Persian on this site; everyone else stays on
- *   English (owner, 2026-10-30). Never for crawlers or when the address carries ?lang=.
+ * - On an English page that has a Persian twin (script tag with data-persian-page="/fa/…", e.g. /test/ and the guides):
+ *   Iran's time zone (Asia/Tehran) or a visitor who picked Persian on this site goes to the Persian page; everyone else
+ *   stays on English (owner, 2026-10-30). Never for crawlers or when the address carries ?lang=. Persian addresses never
+ *   move: whoever opens one asked for Persian.
  * - Clicking any [data-set-lang] link saves that choice; language menus close on outside click or Escape.
  */
 (function () {
@@ -54,8 +55,8 @@
 
   var script = document.currentScript;
   var auto = script && script.hasAttribute('data-auto-language');
-  var tester = script && script.hasAttribute('data-tester-language');
-  if (auto || tester) {
+  var persianPage = script && script.getAttribute && script.getAttribute('data-persian-page');
+  if (auto || persianPage) {
     var bot = /googlebot|google-|googleother|storebot|bingbot|yandex|duckduckbot|applebot|baiduspider|petalbot|semrush|ahrefs|mj12bot|dotbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|discordbot|telegrambot|^whatsapp\/|crawler|spider|slurp|archiver|lighthouse|headlesschrome/i
       .test(navigator.userAgent || '');
     var internal = false;
@@ -67,7 +68,7 @@
       if (!bot && !internal && lang !== 'en') location.replace(SUPPORTED[lang] + location.hash);
     } else if (!bot && !asked) {
       var choice = forced ? null : saved();
-      if (choice === 'fa' || (!choice && /^Asia\/Tehran$/.test(timeZone()))) location.replace('/fa/test/' + location.hash);
+      if (choice === 'fa' || (!choice && /^Asia\/Tehran$/.test(timeZone()))) location.replace(persianPage + location.hash);
     }
   }
 

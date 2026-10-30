@@ -97,7 +97,9 @@ check('Disallow: /test' not in robots and 'Disallow: /fa/test' not in robots, 'd
 # Tester pages (owner, 2026-10-30): the Iran-only help (VPN, error 403, direct APK) is on the Persian page only
 check(not re.search(r'VPN|class="apk"|class="fix"|class="notice"', texts[ROOT / 'test/index.html']), 'test/: the English page must not carry the Iran-only help')
 check(all(k in texts[ROOT / 'fa/test/index.html'] for k in ('VPN', 'class="apk"', 'class="fix"')), 'fa/test/: VPN, 403 and APK help missing')
-check('data-tester-language' in texts[ROOT / 'test/index.html'], 'test/: lang.js must carry data-tester-language')
+# Every English page with a Persian twin sends Iran there (AGENTS.md rule 12)
+for spec_path, twin in [('test/index.html', '/fa/test/')] + [(f'guides/{g}/index.html', f'/fa/guides/{g}/') for g in ('workout-tracker', 'import-workout-plan', 'track-workout-progress')]:
+    check(f'data-persian-page="{twin}"' in texts[ROOT / spec_path], f'{spec_path}: lang.js must carry data-persian-page="{twin}"')
 for path in ['test/index.html', 'fa/test/index.html', '404.html']:
     check(any('noindex' in a.get('content', '') for a in pages[ROOT / path].find('meta', name='robots')), f'{path} needs noindex')
 
