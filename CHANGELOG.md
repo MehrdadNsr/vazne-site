@@ -2,6 +2,12 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Terms: TrAfactor AI Studio
+
+- Terms §8 (owner, 2026-10-30): Vazne is presented by TrAfactor AI Studio («استودیو هوش مصنوعی ترافکتور») in collaboration
+  with IFA Tech Group; the collaboration is not direct, only advice and consultation on general matters. Same wording as
+  the app's new credit line (app OTA 1.1.7).
+
 ## 2026-10-30 — IFA in the terms, barbell on the tester page
 
 - Terms: new section 8 «Ownership and partners» / «مالکیت و همکاران» (owner's wording, 2026-10-30): Vazne is owned by
