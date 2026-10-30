@@ -3,8 +3,9 @@
   "short": "ES",
   "meta": {
     "title": "Vazne: registro de entrenamiento para el gimnasio | Tu compañero de gym",
-    "description": "Vazne, tu compañero de gym para iOS y Android. Importa tu plan de entrenamiento, registra pesos y repeticiones, controla tus descansos y sigue tu progreso.",
-    "og_locale": "es_ES"
+    "description": "Vazne, tu compañero de gym para iOS y Android. Importa tu plan de entrenamiento, registra pesos y repeticiones, controla tus descansos y sigue tu progreso. La app está en inglés y persa.",
+    "og_locale": "es_ES",
+    "og_image_alt": "Vazne, tu compañero de gym: planes de entrenamiento, registro de series y seguimiento del progreso."
   },
   "chrome": {
     "home_label": "Inicio de Vazne",
@@ -12,22 +13,24 @@
     "skip": "Ir al contenido",
     "experience": "La experiencia",
     "progress": "Tu progreso",
-    "faq": "Preguntas",
+    "faq": "Preguntas frecuentes",
     "tester": "Hazte tester",
     "language": "Idioma",
     "footer_label": "Enlaces del sitio",
     "privacy": "Privacidad",
     "terms": "Términos",
     "delete": "Eliminar cuenta",
-    "guides": "Guías",
+    "guides": "Guías (en inglés)",
     "testers": "Testers",
     "made_by": "Hecho por Mehrdad Khani",
-    "motion_on": "Animación: sí",
-    "motion_off": "Animación: no",
-    "about": "Sobre Vazne",
-    "english_only": "en inglés"
+    "motion_on": "Animaciones: activadas",
+    "motion_off": "Animaciones: desactivadas",
+    "about": "Sobre Vazne"
   },
-  "units": { "kg": "KG", "reps": "REPS" },
+  "units": {
+    "kg": "KG",
+    "reps": "REPS"
+  },
   "hero": {
     "eyebrow": "Pensado para tu próxima repetición",
     "title": "Cada repetición<br><span>cuenta.</span>",
@@ -43,7 +46,11 @@
     "plates": "{n} × 5 KG POR LADO",
     "scroll": "DESLIZA PARA SEGUIR"
   },
-  "ribbon": { "one": "TRAE TU PLAN", "two": "ENCUENTRA TU RITMO", "three": "MIRA TU PROGRESO" },
+  "ribbon": {
+    "one": "TRAE TU PLAN",
+    "two": "ENCUENTRA TU RITMO",
+    "three": "MIRA TU PROGRESO"
+  },
   "intro": {
     "label": "LA EXPERIENCIA VAZNE",
     "title": "Tú levantas.<br><em>Nosotros guardamos los detalles.</em>",
@@ -52,9 +59,12 @@
   "plan": {
     "label": "TU PROGRAMA / DÍA 01",
     "day": "Tren superior",
-    "ex1": "Press de banca", "ex1_sets": "4 × 8",
-    "ex2": "Remo en polea", "ex2_sets": "3 × 12",
-    "ex3": "Press de hombros", "ex3_sets": "3 × 10",
+    "ex1": "Press de banca",
+    "ex1_sets": "4 × 8",
+    "ex2": "Remo en polea",
+    "ex2_sets": "3 × 12",
+    "ex3": "Press de hombros",
+    "ex3_sets": "3 × 10",
     "pill": "FOTO / PLAN ESTRUCTURADO",
     "float": "Revisa. Ajusta. Hazlo tuyo.",
     "number": "EL PLAN",
@@ -82,10 +92,12 @@
     "label": "PRESS DE BANCA / HISTORIAL DE EJEMPLO",
     "metric": "KG × 8 REPS",
     "chart_label": "Historial de ejemplo que sube a lo largo de seis semanas",
-    "week1": "SEMANA 01", "week3": "SEMANA 03", "week6": "SEMANA 06",
+    "week1": "SEMANA 01",
+    "week3": "SEMANA 03",
+    "week6": "SEMANA 06",
     "number": "LA VISIÓN COMPLETA",
     "title": "Pasos pequeños.<br>Progreso visible.",
-    "text": "Repasa tu historial, tus informes semanales y tus medidas. Mira qué ha cambiado, recuerda qué funcionó y dale a tu próxima sesión un poco más de intención.",
+    "text": "Repasa tu historial, tus informes semanales y tus medidas. Mira qué ha cambiado, recuerda qué funcionó y llega a tu próxima sesión con un objetivo más claro.",
     "link": "Cómo leer tu progreso (en inglés)",
     "link_href": "/guides/track-workout-progress/",
     "link_attrs": " hreflang=\"en\""
@@ -93,12 +105,30 @@
   "faq": {
     "title": "Preguntas sobre Vazne",
     "items": [
-      ["¿Qué es Vazne?", "Vazne (وزنه) es un compañero de entrenamiento de fuerza para iOS y Android. Reúne tus planes, el registro de pesos y repeticiones, el temporizador de descanso y tu progreso, en inglés y persa."],
-      ["¿Puedo importar el plan de mi entrenador?", "Sí. Puedes hacerlo con una foto, con texto o a mano. Revisa ejercicios, series y repeticiones y corrige cualquier error antes de empezar."],
-      ["¿Puedo descargarla ya?", "Vazne está en pruebas. En iPhone, instálala con TestFlight. En Android, únete a la prueba cerrada de Google Play; los pasos están en <a href=\"/test/\">vazne.app/test</a> (en persa, con un resumen en inglés). Las funciones pueden cambiar entre versiones de prueba."],
-      ["¿Esta web guarda mi entrenamiento?", "No. La barra y los controles de series son una demostración interactiva: no crean una cuenta ni guardan ningún entrenamiento."],
-      ["¿En qué idiomas está Vazne?", "La app está en inglés y persa. Esta web también está en árabe y español: elige el idioma en el menú de arriba."],
-      ["¿Cómo pido ayuda o elimino mi cuenta?", "Escríbenos a <a href=\"mailto:support@vazne.app\">support@vazne.app</a>. La página <a href=\"/delete-account/?lang=en\" hreflang=\"en\">eliminar cuenta</a> explica los pasos y la <a href=\"/privacy/?lang=en\" hreflang=\"en\">política de privacidad</a>, cómo se trata la información de la app (en inglés)."]
+      [
+        "¿Qué es Vazne?",
+        "Vazne (وزنه) es un compañero de entrenamiento de fuerza para iOS y Android. Reúne tus planes, el registro de pesos y repeticiones, el temporizador de descanso y tu progreso, en inglés y persa."
+      ],
+      [
+        "¿Puedo importar el plan de mi entrenador?",
+        "Sí. Puedes hacerlo con una foto, con texto o a mano. Revisa ejercicios, series y repeticiones y corrige cualquier error antes de empezar."
+      ],
+      [
+        "¿Puedo descargar la app ya?",
+        "Vazne está en pruebas. En iPhone, instálala con TestFlight. En Android, únete a la prueba cerrada de Google Play; los pasos están en <a href=\"/test/\">vazne.app/test</a> (en persa, con un resumen en inglés). Las funciones pueden cambiar entre versiones de prueba."
+      ],
+      [
+        "¿Esta web guarda mi entrenamiento?",
+        "No. La barra y los controles de series son una demostración interactiva: no crean una cuenta ni guardan ningún entrenamiento."
+      ],
+      [
+        "¿En qué idiomas está Vazne?",
+        "La app está en inglés y persa. Esta web también está en árabe y español: elige el idioma en el menú de arriba."
+      ],
+      [
+        "¿Cómo pido ayuda o elimino mi cuenta?",
+        "Escríbenos a <a href=\"mailto:support@vazne.app\">support@vazne.app</a>. La página <a href=\"/delete-account/?lang=en\" hreflang=\"en\">«Eliminar cuenta»</a> explica los pasos y la <a href=\"/privacy/?lang=en\" hreflang=\"en\">«Política de privacidad»</a>, cómo se trata la información (ambas en inglés)."
+      ]
     ]
   },
   "closing": {

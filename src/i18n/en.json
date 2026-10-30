@@ -5,7 +5,8 @@
   "meta": {
     "title": "Vazne: Workout Tracker &amp; Gym Log | Your gym buddy",
     "description": "Meet Vazne, your gym buddy for iOS and Android. Import a workout plan, log weights and reps, time your rest and track progress. Available in English and Persian.",
-    "og_locale": "en_US"
+    "og_locale": "en_US",
+    "og_image_alt": "Vazne — your gym buddy. Workout plans, set logging and progress tracking."
   },
   "chrome": {
     "home_label": "Vazne home",
@@ -25,8 +26,7 @@
     "made_by": "Made by Mehrdad Khani",
     "motion_on": "Motion: on",
     "motion_off": "Motion: off",
-    "about": "About Vazne",
-    "english_only": "in English"
+    "about": "About Vazne"
   },
   "units": {
     "kg": "KG",

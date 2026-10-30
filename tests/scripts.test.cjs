@@ -75,6 +75,20 @@ test('never redirects crawlers, internal navigation, or pages without the attrib
   assert.strictEqual(runLang({ tz: 'Asia/Tehran', auto: false }).redirected, null);
 });
 
+test('people are not mistaken for crawlers (Telegram in-app browser, CUBOT phones)', () => {
+  assert.strictEqual(runLang({ tz: 'Asia/Tehran', ua: 'Mozilla/5.0 (Linux; Android 13; wv) Chrome/120 Mobile Safari/537.36 Telegram-Android/10.5.0' }).redirected, '/fa/');
+  assert.strictEqual(runLang({ tz: 'Asia/Riyadh', ua: 'Mozilla/5.0 (Linux; Android 12; CUBOT KINGKONG 7) Chrome/120 Mobile' }).redirected, '/ar/');
+  assert.strictEqual(runLang({ tz: 'Asia/Tehran', ua: 'WhatsApp/2.23.20.0 A' }).redirected, null);
+});
+
+test('?lang= on / is an explicit choice: kept even when storage is blocked', () => {
+  assert.strictEqual(runLang({ tz: 'Asia/Tehran', search: '?lang=en', blocked: true }).redirected, null);
+  const r = runLang({ tz: 'Asia/Tehran', search: '?lang=en' });
+  assert.strictEqual(r.redirected, null);
+  assert.strictEqual(r.localStorage.data['vazne-lang'], 'en');
+  assert.strictEqual(runLang({ tz: 'America/Toronto', search: '?lang=es' }).redirected, '/es/');
+});
+
 test('?tz= pretends a time zone (for testing) and ignores the saved choice', () => {
   assert.strictEqual(runLang({ tz: 'America/Toronto', search: '?tz=Asia/Riyadh', saved: 'en' }).redirected, '/ar/');
   assert.strictEqual(runLang({ tz: 'Asia/Tehran', search: '?tz=Europe/London' }).redirected, null);

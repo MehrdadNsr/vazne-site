@@ -8,7 +8,8 @@
  *   in Iran who browse through a VPN.
  * - On the English home page only (script tag with data-auto-language): a first-time visitor whose language is not
  *   English is sent to /fa/, /ar/ or /es/. Never for crawlers, never when they came from another page of this site,
- *   never once they have picked a language. Test it with ?tz=Asia/Riyadh (pretend time zone) or a private window.
+ *   never once they have picked a language (links to / carry ?lang=en). Test it with ?tz=Asia/Riyadh (pretend time
+ *   zone) or a private window.
  * - Clicking any [data-set-lang] link saves that choice; language menus close on outside click or Escape.
  */
 (function () {
@@ -50,10 +51,13 @@
 
   var script = document.currentScript;
   if (script && script.hasAttribute('data-auto-language')) {
-    var bot = /bot|crawl|spider|slurp|archiver|preview|lighthouse|headless|facebookexternalhit|whatsapp|telegram/i.test(navigator.userAgent || '');
+    var bot = /googlebot|google-|googleother|storebot|bingbot|yandex|duckduckbot|applebot|baiduspider|petalbot|semrush|ahrefs|mj12bot|dotbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|discordbot|telegrambot|^whatsapp\/|crawler|spider|slurp|archiver|lighthouse|headlesschrome/i
+      .test(navigator.userAgent || '');
     var internal = false;
     try { internal = !!document.referrer && new URL(document.referrer).host === location.host; } catch (e) { /* ignore */ }
-    var lang = detect();
+    var asked = /[?&]lang=(en|fa|ar|es)\b/.exec(location.search);
+    if (asked) save(asked[1]); // language links to / carry ?lang=en, so the choice holds even without storage
+    var lang = asked ? asked[1] : detect();
     if (!bot && !internal && lang !== 'en') location.replace(SUPPORTED[lang] + location.hash);
   }
 

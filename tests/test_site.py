@@ -120,7 +120,6 @@ for path, page in pages.items():
     text = texts[path]
     check('fonts.googleapis' not in text and 'googletagmanager' not in text and 'http://' not in re.sub(r'xmlns(:\w+)?="http://[^"]*"', '', text),
           f'{rel}: third-party font, tracker or plain http')
-    check('GPSBu6Jz' not in text, f'{rel}: old TestFlight link')
 
 for css in (ROOT / 'assets').glob('*.css'):
     for url in re.findall(r'url\((/[^)]+)\)', css.read_text()):
@@ -135,6 +134,9 @@ for path, page in pages.items():
             continue
         expected = links['iosAppStore'] or links['iosTestFlight'] if key == 'ios' else links.get(key)
         check(attrs.get('href') == expected, f'{path.relative_to(ROOT)}: data-link={key} href {attrs.get("href")} != links.js {expected}')
+for path, text in texts.items():
+    for code in re.findall(r'testflight\.apple\.com/join/(\w+)', text):
+        check(links['iosTestFlight'].endswith('/' + code), f'{path.relative_to(ROOT)}: TestFlight code {code} is not the one in links.js')
 for home in HOMES.values():
     text = texts[local(home)]
     check('class="store" href="/test/"' in text, f'{home}: Android button must go to /test/')

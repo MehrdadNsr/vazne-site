@@ -21,6 +21,7 @@ body {
 }
 .guide-body h2 { margin: 32px 0 10px; font-size: 23px; line-height: 1.4; font-weight: 600; letter-spacing: -.01em; }
 .guide-body p { margin: 0; color: #3a4250; }
+[dir=rtl] .guide-body h2 { letter-spacing: 0; }
 .guide-cta {
   position: relative; isolation: isolate; overflow: hidden; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
   margin: 26px 0 0; padding: 28px 32px; border-radius: 28px; color: #f3f5f8;

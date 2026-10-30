@@ -98,7 +98,8 @@ def lang_menu(lang, alternates):
         if code not in alternates:
             continue
         here = ' aria-current="true"' if code == current and lang != 'bilingual' else ''
-        items.append(f'<li><a href="{alternates[code]}" hreflang="{code}" lang="{code}" data-set-lang="{code}"{here}>{STRINGS[code]["name"]}</a></li>')
+        href = '/?lang=en' if alternates[code] == '/' else alternates[code]
+        items.append(f'<li><a href="{href}" hreflang="{code}" lang="{code}" data-set-lang="{code}"{here}>{STRINGS[code]["name"]}</a></li>')
     if lang == 'bilingual':
         summary = f'<span data-only="en">EN</span><span data-only="fa">FA</span>'
         label = 'Language / زبان'
@@ -135,7 +136,7 @@ def footer(lang, home_page=False):
     guide_attr = ' hreflang="en"' if lang in ('ar', 'es') else ''
     motion = (f'<button class="plain" id="motion" type="button" aria-pressed="true" data-on="{esc(get(lang, "chrome.motion_on"))}" '
               f'data-off="{esc(get(lang, "chrome.motion_off"))}">{get(lang, "chrome.motion_on")}</button>') if home_page else ''
-    languages = ''.join(f'<a href="{HOME[c]}" hreflang="{c}" lang="{c}" data-set-lang="{c}">{STRINGS[c]["name"]}</a>' for c in LANGS)
+    languages = ''.join(f'<a href="{"/?lang=en" if c == "en" else HOME[c]}" hreflang="{c}" lang="{c}" data-set-lang="{c}">{STRINGS[c]["name"]}</a>' for c in LANGS)
     return (f'<footer class="site-footer"><span lang="en">VAZNE © 2026 &nbsp;/&nbsp; YOUR GYM BUDDY</span>'
             f'<div class="footer-links" aria-label="{esc(get(base, "chrome.footer_label"))}">{motion}'
             f'<a href="{legal(lang, "/privacy/")}">{t(lang, "chrome.privacy")}</a>'

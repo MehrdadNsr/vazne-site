@@ -1,8 +1,7 @@
 # Rules for changing vazne.app
 
-Read [README.md](README.md) first (pages, files, how to build). Maintainer: Claude, on the owner's decision of
-2026-10-30 (owner: Mehrdad). Several agents edited this site before and left four different looks, dead files and
-English text on Persian pages; these rules exist so that does not happen again.
+Read [README.md](README.md) first (pages, files, how to build). These rules keep every page on one look and every
+language in step.
 
 1. **`main` is the live site.** Never edit or push to `main` mid-work. Work on a branch or a separate folder, run
    `bash tools/check.sh` (and `--browser` for anything visual), then push to `main` once, and check the live pages.
@@ -10,8 +9,8 @@ English text on Persian pages; these rules exist so that does not happen again.
    regions between `<!-- nav -->` / `<!-- footer -->` markers, and `sitemap.xml`. Edit `src/` or `tools/build.py`, then
    `python3 tools/build.py`. The check fails if they are out of date.
 3. **One look.** Colours and fonts live in `assets/base.css` (crimson `--red` for the brand, `--ink` black, `--paper`
-   grey). No new colours, fonts or design systems; small additions in the existing style are fine. The owner allows
-   changes up to about 30% of the look; bigger redesigns need the owner.
+   grey). No new colours, fonts or design systems; small additions in the existing style are fine. A redesign needs
+   the owner's OK.
 4. **Every language, every time.** A text change in one language is made in all four (`src/i18n/*.json` keep the same
    keys). English is the source. Persian: the site's warm spoken tone on the home page, standard written Persian in
    the FAQ, guides and legal pages; Persian digits. Arabic: Modern Standard Arabic, Western digits. Spanish: neutral,

@@ -21,7 +21,10 @@ Newest first. Each entry: what changed, why, how it was checked.
 - Data: three.js (the 3D barbell) is skipped for visitors in data-saver mode or on 2G; the drawn barbell stays.
 - Sitemap generated with hreflang alternates (13 URLs). Removed dead files (old `style.css`, `motion.css`, `seo.css`,
   `legal.css`, `site.js` and its stale tests, unused `barbell.webp`). New checks: `tools/check.sh`, `tests/`.
-- Docs: README rewritten, maintainer rules in AGENTS.md (CLAUDE.md points to it), this changelog.
+- Docs: README rewritten, rules in AGENTS.md (CLAUDE.md points to it), this changelog.
+- Review fixes: Arabic / Spanish / Persian wording, no letter-spacing on Persian or Arabic anywhere, crawler list
+  narrowed (Telegram's in-app browser is a person), language links to `/` carry `?lang=en` so the choice holds even
+  without browser storage, link-preview text localised.
 - Checked: `bash tools/check.sh --browser` (33 page loads, Android / iPhone / desktop), region tests in Chromium
   (Tehran, Kabul, Riyadh, Cairo, Madrid, Mexico City, Toronto, Berlin, Googlebot), independent review before deploy.
 

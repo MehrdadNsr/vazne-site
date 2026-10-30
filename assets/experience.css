@@ -215,7 +215,8 @@ h2 em { font-style: normal; color: #727b89; }
   font-family: Estedad, Tahoma, Arial, sans-serif;
 }
 [dir=rtl] .eyebrow, [dir=rtl] .side-note, [dir=rtl] .section-id, [dir=rtl] .micro, [dir=rtl] .feature .number,
-[dir=rtl] .ribbon, [dir=rtl] .loadtop, [dir=rtl] .scroll-cue, [dir=rtl] .plan h4 { letter-spacing: 0; }
+[dir=rtl] .ribbon, [dir=rtl] .loadtop, [dir=rtl] .loadtop output, [dir=rtl] .scroll-cue, [dir=rtl] .plan h4, [dir=rtl] .log h4,
+[dir=rtl] .chart .metric { letter-spacing: 0; }
 [dir=rtl] .side-note { font-size: 11px; }
 [dir=rtl] .eyebrow { font-size: 12px; }
 [dir=rtl] .loadtop label { font-size: 12px; font-weight: 700; }
