@@ -55,6 +55,15 @@ svg{display:block}
 .step.done .btn .go{display:none}
 .ok svg{transform:none}
 
+.apk{margin-top:14px;background:#fff;border:1px solid #e3e7ee;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.apk h3{margin:0;font-size:16px}
+.apk p{margin:0;font-size:14px;line-height:1.85;color:#454d5a}
+.btn.alt{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px #c9cfd9}
+.btn.alt:hover{background:#f6f7f9}
+.btn.alt svg{transform:none}
+[data-device] .apk-after{display:none}
+.apk-after{flex-direction:column;gap:8px;padding:12px 14px;border-radius:14px;border-inline-start:3px solid var(--red);background:#faedf0}
+.apk.opened .apk-after{display:flex}
 .ios-box{display:flex;flex-direction:column;gap:10px}
 .ios-box p a,.help a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .secondary{font-size:14px}
@@ -82,6 +91,8 @@ svg{display:block}
   .step{padding:16px}
   .btn{font-size:15px;padding:12px 20px}
   .ios-box{flex-direction:row;align-items:center;gap:22px}
+  .apk{padding:16px}
+  .apk .btn{align-self:flex-start;min-width:320px}
   .ios-box .btn{flex:none;min-width:260px}
 
 }

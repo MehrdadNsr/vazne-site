@@ -5,7 +5,8 @@
  * - <html> gets data-device="android|ios|mobile|desktop" (CSS puts the right section first)
  *   and the class "has-appstore" once VAZNE_LINKS.iosAppStore is filled.
  * - On /test/, a step the visitor has opened is marked done (kept in this browser only); step 3 stays grey until
- *   steps 1 and 2 were opened (data-after), with a «done them already» way past it.
+ *   steps 1 and 2 were opened (data-after), with a «done them already» way past it. After the direct APK download,
+ *   its box shows the next steps.
  * Load it after links.js. It is safe to load in <head>: links are applied once the page is parsed.
  */
 (function () {
@@ -41,9 +42,19 @@
       var url = resolve(els[i].getAttribute('data-link'));
       if (url) els[i].setAttribute('href', url);
     }
+    var done = readDone();
+    // Direct APK: once downloaded, the box shows what to do next (install, come back for new versions).
+    var apk = document.querySelector('.apk');
+    if (apk) {
+      apk.classList.toggle('opened', !!done.apk);
+      apk.querySelector('.btn').addEventListener('click', function () {
+        done.apk = 1;
+        saveDone(done);
+        apk.classList.add('opened');
+      });
+    }
     var steps = document.querySelectorAll('[data-step]');
     if (!steps.length) return;
-    var done = readDone();
     function mark() {
       for (var j = 0; j < steps.length; j++) {
         var step = steps[j], link = step.querySelector('a');

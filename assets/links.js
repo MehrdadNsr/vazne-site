@@ -12,6 +12,9 @@ window.VAZNE_LINKS = {
   androidGroup: 'https://groups.google.com/g/vazne-pre-release-testing',
   androidOptIn: 'https://play.google.com/apps/testing/com.vazne.app',
   androidStore: 'https://play.google.com/store/apps/details?id=com.vazne.app',
+  // Direct download for testers who can't reach Google Play (Iran). The file lives in this repo under /download/;
+  // replace it (and the name here and in test/index.html) with each new Android build. Keep only the newest file.
+  androidApk: '/download/vazne-1.1.9.apk',
 
   // iPhone
   iosTestFlight: 'https://testflight.apple.com/join/9g8auNhk',
