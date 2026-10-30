@@ -46,6 +46,7 @@ assets/barbell.js                   the 3D barbell (home + the small one on /tes
 assets/page.css                     guides, legal pages, 404
 assets/test.css, testers.js         tester page and the download buttons
 assets/links.js                     EVERY download / tester link (see below)
+download/vazne-<version>.apk         direct Android download on /test/ (only the newest file; see below)
 assets/lang.js                      language menu, saved choice, first-visit language
 assets/legal.js                     picks English or Persian on the legal pages
 assets/three-0.160.1.min.js         three.js (MIT, assets/THREE-LICENSE.txt)
@@ -62,6 +63,11 @@ tests/                              test_site.py (links, SEO, translations), scr
   iPhone button switches to the App Store, with TestFlight as a secondary link. Also update the same link in the HTML
   (it is the fallback without JavaScript; `tests/test_site.py` fails until they match). If the tester page's address
   changes, regenerate its QR code: `python3 tools/make_qr.py`.
+- **New Android build → new APK on /test/:** in the app repo build the `website-apk` profile too
+  (`npx eas-cli@latest build -p android --profile website-apk`; arm64-only APK, channel `production`). Check it (no keys
+  inside), put it in `download/` as `vazne-<version>.apk`, delete the old file, update `androidApk` in `assets/links.js`,
+  the fallback `href` and the size on the button in `test/index.html` (Persian and English). OTA updates reach it on their
+  own; only a new build needs a new file.
 - **Home page text:** edit `src/i18n/<lang>.json` (keep the same keys in all four), then `python3 tools/build.py`.
 - **Home page layout:** `src/home.html` (+ `assets/experience.css`), then build.
 - **Top bar / footer / language menu:** `tools/build.py` (`nav()`, `footer()`) + `assets/base.css`, then build.

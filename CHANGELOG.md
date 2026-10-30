@@ -2,6 +2,19 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-30 — Tester page: direct APK download
+
+- `/test/` (owner, 2026-10-30): at the end of the Android steps, «موفق نشدی نصبش کنی؟» with a direct download of the app
+  (`/download/vazne-1.1.9.apk`, 63 MB, arm64 only, Android build `75c6f4b3`, versionCode 9, channel `production`, runtime
+  `9b9c59c0…`, so it gets the same OTA updates as the Google Play build). After the click (remembered in this browser) the
+  box says how to install, that small updates arrive inside the app and new full versions are here, and that moving to
+  Google Play later means uninstalling (backup first: this file is signed with the upload key, Play installs with
+  Google's key). Link in `assets/links.js` (`androidApk`); English summary updated.
+- With each new Android build: build the `website-apk` profile too (app repo `eas.json`), replace the file here, update
+  the name in `assets/links.js` and `test/index.html`, keep only the newest file (each one adds ~60 MB to the repo history).
+- Checked: APK contents (arm64 only; runtime `9b9c59c0…` in `assets/fingerprint`; API `api.vazne.app`; no key or private-key
+  patterns); `tools/check.sh --browser`; screenshots of the box before and after the click at 390 px and 1280 px.
+
 ## 2026-10-30 — Tester page: what to do on error 403 at step 2
 
 - `/test/` (owner, 2026-10-30): under step 2, a closed «خطای ۴۰۳ دیدی؟» box with the owner's steps: VPN on with a server

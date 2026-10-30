@@ -114,6 +114,7 @@ function runTesters({ ua, touch = 0, appStore = '' }) {
       readyState: 'complete',
       documentElement: { setAttribute: (k, v) => { attrs[k] = v; }, classList: { add: (c) => classes.add(c) } },
       querySelectorAll: (sel) => (sel === '[data-link]' ? anchors : []),
+      querySelector: () => null,
     },
   };
   vm.runInNewContext(LINKS_JS.replace("iosAppStore: ''", `iosAppStore: '${appStore}'`), ctx);
