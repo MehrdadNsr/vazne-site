@@ -1,35 +1,84 @@
-# Vazne website
+# vazne.app — the Vazne website
 
-Bilingual Persian/English product website for Vazne at https://vazne.app.
+Static website for Vazne (وزنه), the strength-training app. Plain HTML, CSS and JavaScript, published by **GitHub
+Pages from the `main` branch, repository root**: a push to `main` is live within about a minute. Rules for anyone
+(person or AI) changing it: [AGENTS.md](AGENTS.md). History: [CHANGELOG.md](CHANGELOG.md).
 
-Static HTML, CSS and JavaScript. No build step or application backend. Publish with GitHub Pages from the `main` branch, repository root.
+## Pages
 
-- `index.html`: responsive landing page, inline SVG barbell and English copy. `fa/index.html` is the independently crawlable Persian version.
-- `site.js`: animated plate stacks, pointer/touch/keyboard slider and scroll reveals.
-- `motion.css`: glass controls, vector icons and reduced-motion-aware animation.
-- `Estedad.woff2` / `Estedad-OFL.txt`: self-hosted Persian variable font and its OFL license.
-- `CNAME`: custom website domain.
-- `.nojekyll`: serve the static files directly.
-- `privacy/`, `terms/`, `delete-account/`: legal pages (Persian and English in the same HTML; `legal.css`, `legal.js`). The English text is the source. Linked from every page's footer.
-- `sitemap.xml`: canonical public page URLs for search engines. Update it when adding, removing or changing a public page URL; omit fragments and language-toggle variants that share the same URL.
-- `robots.txt`: permits crawling and advertises the sitemap at `https://vazne.app/sitemap.xml`.
+| URL | What | Language |
+|---|---|---|
+| `/`, `/fa/`, `/ar/`, `/es/` | Home page (3D barbell, demo, FAQ, download buttons) | English, Persian, Arabic, Spanish |
+| `/test/` | Tester page: Android closed testing (3 steps), iPhone TestFlight, QR code on computers | Persian (+ short English) — `noindex` |
+| `/guides/…`, `/fa/guides/…` | Three guides: workout log, plan import, reading progress | English + Persian |
+| `/privacy/`, `/terms/`, `/delete-account/` | Legal pages; both languages in one file, English is binding. Linked from the app and the stores: never move them | English + Persian (`?lang=fa`) |
+| `404.html` | Page not found | English + links to every language |
 
-The page uses the existing Vazne dumbbell glyph with the owner’s silver/white glass and electric-blue reference direction. `style.css` holds shared layout styles and `seo.css` styles the guide and FAQ content. Persian uses self-hosted Estedad; Manrope and the Vazirmatn fallback are loaded from Google Fonts. Icons and the animated barbell are local SVG, with no animation library or external icon service. It does not collect form submissions or persist demo data.
+## Languages and the first visit
 
-The demo ranges from 20 to 100 kg in 2.5 kg steps. A 20 kg bar carries equal stacks of 2.5 kg plates, plus a 1.25 kg plate on each side for half steps. Plate count never decreases when total weight increases. The whole ruler supports horizontal pointer dragging; vertical touch gestures remain available for page scrolling. Native range semantics support keyboard and screen readers. Scroll reveals run once and respect `prefers-reduced-motion`; content stays visible without JavaScript or IntersectionObserver.
+Every page has a language menu (globe icon) with the languages that page exists in. On the **English home page only**,
+a first-time visitor is sent to their language (`assets/lang.js`):
 
-Run logic and DOM checks with `node --test site.test.cjs`.
+1. the language they picked before on this site (saved when they click a language link), else
+2. their **region**, read from the device's time zone: Iran / Afghanistan → Persian, Arab countries → Arabic, Spain and
+   Spanish-speaking America → Spanish (no IP lookup: nothing is sent to a third party, it works on GitHub Pages and it
+   stays right for visitors in Iran on a VPN), else
+3. their browser's first language if the site has it, else English.
 
-Testers: `/test/` (Persian, `noindex`, not in the sitemap) walks Android testers through Google Play closed testing and iPhone testers to TestFlight; it shows the visitor's own platform first and a QR code of itself on computers. The home pages' Android button goes to `/test/`, the iPhone button to TestFlight. **All download and tester links live in `assets/links.js`** (`assets/testers.js` applies them); fill `iosAppStore` there when the App Store page is live and every iPhone button switches to it, with TestFlight as a secondary link. The QR code is a fixed SVG: regenerate it with `python3 tools/make_qr.py` if the tester address changes.
+Crawlers, visitors coming from another page of the site and people who already chose are never redirected, so Google
+indexes every language at its own URL (hreflang). **To test:** open `https://vazne.app/?tz=Asia/Riyadh` (pretend time
+zone; also `Asia/Tehran`, `Europe/Madrid`, `America/Toronto`), or a private window from the real place.
 
-Website changes must not modify the `api` DNS record, app repository or app server. Only website apex/www configuration is in scope.
+The app itself is in English and Persian; the Arabic and Spanish pages say so.
 
-## Search and localization
+## Files
 
-English lives at `/`; Persian lives at `/fa/`. Language links navigate to the matching static URL. Keep each language page self-canonical and keep reciprocal `en`, `fa` and `x-default` alternate links. Never redirect based on browser language.
+```
+index.html, fa/ ar/ es/index.html   home pages — GENERATED from src/ (do not edit by hand)
+src/home.html                       home page template
+src/i18n/{en,fa,ar,es}.json         all home-page text + top bar / footer text (English is the source)
+src/partials/poster.svg             drawn barbell shown before / instead of the 3D one
+guides/, fa/guides/, privacy/, terms/, delete-account/, 404.html, test/   hand-written pages; their top bar and
+                                    footer (between <!-- nav --> and <!-- footer --> markers) are generated
+assets/base.css                     colours, fonts, top bar, language menu, footer — every page
+assets/experience.css, experience.js   home page (three.js loads only if the visitor is not saving data)
+assets/page.css                     guides, legal pages, 404
+assets/test.css, testers.js         tester page and the download buttons
+assets/links.js                     EVERY download / tester link (see below)
+assets/lang.js                      language menu, saved choice, first-visit language
+assets/legal.js                     picks English or Persian on the legal pages
+assets/three-0.160.1.min.js         three.js (MIT, assets/THREE-LICENSE.txt)
+assets/Estedad.woff2                Persian/Arabic font (OFL, assets/Estedad-OFL.txt); English uses Arial
+sitemap.xml                         GENERATED (with hreflang alternates); /test/ and 404 are left out on purpose
+tools/build.py                      builds the generated parts;  tools/check.sh  runs every check
+tools/make_qr.py, render_social_card.py   QR code on /test/, social-card.png (link previews)
+tests/                              test_site.py (links, SEO, translations), scripts.test.cjs (lang.js, testers.js)
+```
 
-Three paired guides live under `/guides/` and `/fa/guides/`: workout tracking, plan import and progress tracking. Keep translations, internal links and sitemap entries in sync when editing them. All public content is present in the initial HTML without JavaScript.
+## Common changes
 
-Home pages contain WebSite, WebPage and SoftwareApplication JSON-LD. Guides contain WebPage and BreadcrumbList JSON-LD. Do not invent prices, reviews, ratings, store links or download counts. The app remains in testing until verified launch information is supplied. `social-card.png` is the 1200 × 630 sharing card; `favicon.svg` is the crawlable site icon. The 404 page is excluded from indexing.
+- **A download or tester link** (e.g. the App Store link at launch): edit `assets/links.js`. Fill `iosAppStore` and every
+  iPhone button switches to the App Store, with TestFlight as a secondary link. Also update the same link in the HTML
+  (it is the fallback without JavaScript; `tests/test_site.py` fails until they match). If the tester page's address
+  changes, regenerate its QR code: `python3 tools/make_qr.py`.
+- **Home page text:** edit `src/i18n/<lang>.json` (keep the same keys in all four), then `python3 tools/build.py`.
+- **Home page layout:** `src/home.html` (+ `assets/experience.css`), then build.
+- **Top bar / footer / language menu:** `tools/build.py` (`nav()`, `footer()`) + `assets/base.css`, then build.
+- **A guide or legal page:** edit the HTML directly (outside the markers). Legal text comes from the owner; keep the
+  English and Persian versions saying the same thing and update "Last updated".
+- **A new page:** copy a guide, add it to `PAGES` (and `SITEMAP` if it should be indexed) in `tools/build.py`, build.
 
-Run `python seo.test.py` and `node --test site.test.cjs` before publishing. After publishing, verify canonical URLs return 200 and unknown URLs return 404. Submit `https://vazne.app/sitemap.xml` in the verified Search Console property and inspect `/` and `/fa/`. Track brand queries Vazne and وزنه, indexed URLs, impressions and clicks; a sitemap does not guarantee indexing or rankings.
+## Checking and publishing
+
+```bash
+python3 tools/build.py          # regenerate
+bash tools/check.sh             # build up to date, links, SEO, translations, script tests
+bash tools/check.sh --browser   # + every page in Chromium as Android / iPhone / computer (needs Playwright)
+```
+
+Work on a branch or a separate folder, never directly on `main`. When everything passes, push to `main`, wait about a
+minute and open the changed pages on https://vazne.app. Website changes never touch the app repository, the app server
+or DNS records other than the website's own (the `api` record belongs to the app server).
+
+Search: the sitemap is at https://vazne.app/sitemap.xml (submit it in Google Search Console after big changes). Do not invent prices, ratings,
+reviews, store links or download counts in the structured data; the app is in testing.

@@ -1,0 +1,144 @@
+{
+  "_note": "English is the source text. Keep the same keys in fa.json, ar.json and es.json. HTML is allowed in values.",
+  "name": "English",
+  "short": "EN",
+  "meta": {
+    "title": "Vazne: Workout Tracker &amp; Gym Log | Your gym buddy",
+    "description": "Meet Vazne, your gym buddy for iOS and Android. Import a workout plan, log weights and reps, time your rest and track progress. Available in English and Persian.",
+    "og_locale": "en_US"
+  },
+  "chrome": {
+    "home_label": "Vazne home",
+    "nav_label": "Main navigation",
+    "skip": "Skip to content",
+    "experience": "The experience",
+    "progress": "Your progress",
+    "faq": "FAQ",
+    "tester": "Become a tester",
+    "language": "Language",
+    "footer_label": "Site links",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "delete": "Delete account",
+    "guides": "Guides",
+    "testers": "Testers",
+    "made_by": "Made by Mehrdad Khani",
+    "motion_on": "Motion: on",
+    "motion_off": "Motion: off",
+    "about": "About Vazne",
+    "english_only": "in English"
+  },
+  "units": {
+    "kg": "KG",
+    "reps": "REPS"
+  },
+  "hero": {
+    "eyebrow": "Built around your next rep",
+    "title": "Make every<br><span>rep count.</span>",
+    "text": "Your plan. Your pace. Your progress.<br>A gym buddy that remembers every rep.",
+    "scene_label": "Interactive 3D barbell. Drag horizontally to rotate; adjust the load with the slider below.",
+    "poster_label": "Black and chrome barbell with red plate details",
+    "note_start": "YOUR NEXT PERSONAL BEST<br>STARTS WITH ONE MORE REP",
+    "note_end": "DRAG TO EXPLORE<br>ADJUST YOUR LOAD",
+    "cta": "Explore the experience",
+    "status": "iOS + Android · Currently in testing",
+    "load_label": "MAKE IT HEAVIER",
+    "range_label": "Barbell weight in kilograms",
+    "plates": "{n} × 5 KG / SIDE",
+    "scroll": "SCROLL TO GO FURTHER"
+  },
+  "ribbon": {
+    "one": "BRING YOUR PLAN",
+    "two": "FIND YOUR RHYTHM",
+    "three": "SEE YOUR PROGRESS"
+  },
+  "intro": {
+    "label": "THE VAZNE EXPERIENCE",
+    "title": "You do the lifting.<br><em>We keep the details.</em>",
+    "text": "From the first warm-up to the last working set, keep your program, workout history and next step in one place."
+  },
+  "plan": {
+    "label": "YOUR PROGRAM / DAY 01",
+    "day": "Upper body",
+    "ex1": "Bench press",
+    "ex1_sets": "4 × 8",
+    "ex2": "Cable row",
+    "ex2_sets": "3 × 12",
+    "ex3": "Shoulder press",
+    "ex3_sets": "3 × 10",
+    "pill": "PHOTO / STRUCTURED PLAN",
+    "float": "Review. Adjust. Make it yours.",
+    "number": "THE PLAN",
+    "title": "From a screenshot.<br>To your next session.",
+    "text": "Bring a photo, paste your program or build it yourself. Review the exercises and sets before you start. Your routine, with a little less admin.",
+    "link": "How plan import works",
+    "link_href": "/guides/import-workout-plan/",
+    "link_attrs": ""
+  },
+  "rhythm": {
+    "number": "THE RHYTHM",
+    "title": "Stay in the zone.<br>Not in the menus.",
+    "text": "Log the weight. Count the reps. Take your rest. Keep notes and previous sets close, so your attention stays where it belongs.",
+    "note": "INTERACTIVE PREVIEW · NOTHING IS SAVED",
+    "exercise": "Bench press",
+    "set": "SET 3 / 3",
+    "done": "SESSION COMPLETE",
+    "kg_label": "Demo weight in kilograms",
+    "reps_label": "Demo repetitions",
+    "button": "Complete set",
+    "again": "Try another set",
+    "saved": "Set complete. Preview only. Nothing saved."
+  },
+  "progress": {
+    "label": "BENCH PRESS / ILLUSTRATIVE HISTORY",
+    "metric": "KG × 8 REPS",
+    "chart_label": "Illustrative workout history rising over six weeks",
+    "week1": "WEEK 01",
+    "week3": "WEEK 03",
+    "week6": "WEEK 06",
+    "number": "THE BIGGER PICTURE",
+    "title": "Small steps.<br>Visible momentum.",
+    "text": "Look back at your training history, weekly reports and measurements. See what changed, remember what worked, and give the next session a little more intention.",
+    "link": "How to read your progress",
+    "link_href": "/guides/track-workout-progress/",
+    "link_attrs": ""
+  },
+  "faq": {
+    "title": "Questions about Vazne",
+    "items": [
+      [
+        "What is Vazne?",
+        "Vazne (وزنه) is a strength-training companion for iOS and Android. It brings workout plans, weight and rep logging, rest timing and progress records together, in English and Persian."
+      ],
+      [
+        "Can I import my coach’s plan?",
+        "Yes. Vazne supports photo, text and manual entry. Review the exercises, sets and reps and correct any import mistakes before you start."
+      ],
+      [
+        "Can I download it now?",
+        "Vazne is in testing. On iPhone, install it with TestFlight. On Android, join the closed test on Google Play; the steps are on <a href=\"/test/\">vazne.app/test</a>. Features may change between test versions."
+      ],
+      [
+        "Does this website save my workout?",
+        "No. The barbell and set controls are an interactive demonstration. They do not create an account or save a workout."
+      ],
+      [
+        "Which languages does Vazne speak?",
+        "The app is in English and Persian. This website is also in Arabic and Spanish: pick a language from the menu at the top."
+      ],
+      [
+        "How do I get help or delete my account?",
+        "Email <a href=\"mailto:support@vazne.app\">support@vazne.app</a>. The <a href=\"/delete-account/\">delete account</a> page explains the steps, and the <a href=\"/privacy/\">privacy policy</a> explains how app information is handled."
+      ]
+    ]
+  },
+  "closing": {
+    "eyebrow": "YOUR NEXT CHAPTER STARTS WITH A SET",
+    "title": "Show up.<br><span>Level up.</span>",
+    "android": "Android",
+    "android_sub": "Closed testing on Google Play",
+    "iphone": "iPhone",
+    "tester": "Become a Vazne tester",
+    "text": "Built for your training. In English and Persian.<br>iOS + Android · Currently in testing."
+  }
+}

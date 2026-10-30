@@ -1,22 +1,9 @@
-/* /test/ — tester page. Same tokens as the home pages (assets/experience.css). Mobile first. */
-@font-face{font-family:Estedad;src:url(/Estedad.woff2) format('woff2');font-display:swap}
-:root{--ink:#191d26;--muted:#535a67;--red:#c52235;--paper:#f3f4f6;--line:#d4d9e1;--card:#ffffffc7}
-*{box-sizing:border-box}
-html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;font-family:Estedad,Tahoma,Arial,sans-serif;line-height:1.8;background:radial-gradient(ellipse at 85% 0%,#dce1eb 0%,transparent 45%),radial-gradient(ellipse at 0% 30%,#f4dce0 0%,transparent 40%),var(--paper);background-repeat:no-repeat}
-a{color:inherit}
-a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+/* /test/ — tester page (Persian, noindex). Colours, top bar and footer come from base.css. Mobile first. */
+body{display:flex;flex-direction:column;min-height:100vh;line-height:1.8;background:radial-gradient(ellipse at 85% 0%,#dce1eb 0%,transparent 45%),radial-gradient(ellipse at 0% 30%,#f4dce0 0%,transparent 40%),var(--paper);background-repeat:no-repeat}
 a:focus-visible{outline:2px solid var(--red);outline-offset:4px;border-radius:6px}
-svg{display:block}
 [lang=en]{font-family:Arial,Helvetica,sans-serif}
 
-.top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;padding:0 20px;border-bottom:1px solid #191d2614}
-.brand{display:flex;direction:ltr;align-items:center;gap:10px;font-size:24px;font-weight:800;letter-spacing:-1px;text-decoration:none}
-.brand svg{width:28px;color:var(--red)}
-.top-link{font-size:13px;color:var(--muted);text-decoration:none}
-.top-link:hover{color:var(--red)}
-
-.wrap{width:min(1120px,100%);margin:0 auto;padding:0 20px 40px}
+.wrap{flex:1;width:min(1120px,100%);margin:0 auto;padding:0 20px 40px}
 .intro{padding:36px 0 8px}
 .eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;color:#505967}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
@@ -24,8 +11,9 @@ h1{font-size:clamp(40px,11vw,76px);line-height:1.35;letter-spacing:-.03em;margin
 h1 span{color:var(--red)}
 .intro p{margin:0;max-width:520px;font-size:16px;color:var(--muted)}
 
+svg{display:block}
 .platforms{display:flex;flex-direction:column;gap:18px;margin-top:28px}
-.platform{background:var(--card);border:1px solid #fff;border-radius:24px;box-shadow:0 12px 40px #2a35410c;padding:22px 18px}
+.platform{background:#ffffffc7;border:1px solid #fff;border-radius:24px;box-shadow:0 12px 40px #2a35410c;padding:22px 18px}
 .platform h2{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-size:24px;letter-spacing:-.02em}
 .platform h2 svg{width:24px;height:24px;flex:none}
 .platform .lead{margin:0 0 14px;font-size:14px;color:var(--muted)}
@@ -47,7 +35,7 @@ h1 span{color:var(--red)}
 .ok svg{transform:none}
 
 .ios-box{display:flex;flex-direction:column;gap:10px}
-.ios-box p a,.help a{color:var(--red);font-weight:700}
+.ios-box p a,.help a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .secondary{font-size:14px}
 .if-appstore{display:none}
 .has-appstore .if-appstore{display:flex}
@@ -59,16 +47,11 @@ h1 span{color:var(--red)}
 .en h2{font-size:14px;margin:0 0 6px;color:var(--ink)}
 .en p{margin:0}
 
-footer{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;padding:26px 20px;border-top:1px solid #cbd1db;background:#e9ecf1;color:#4c596c;font-size:12px}
-footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
-footer a{text-decoration:none}
-footer a:hover{color:var(--red)}
-
 /* The visitor's own platform comes first */
 [data-device=ios] .ios{order:-1}
 
 @media (min-width:860px){
-  .top{height:96px;padding:0 5vw}
+
   .wrap{padding:0 5vw 60px}
   .head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
   .intro{padding:60px 0 10px}
@@ -78,7 +61,7 @@ footer a:hover{color:var(--red)}
   .btn{font-size:15px;padding:12px 20px}
   .ios-box{flex-direction:row;align-items:center;gap:22px}
   .ios-box .btn{flex:none;min-width:260px}
-  footer{padding:30px 5vw}
+
 }
 /* Computers (and any wide screen JavaScript could not identify): show the QR code of this page */
 @media (min-width:860px){
