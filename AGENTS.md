@@ -37,3 +37,7 @@ language in step.
     `Asia/Tehran` or a saved Persian choice; never crawlers or `?lang=`). Time zone, not IP: GitHub Pages can't see the IP
     without a third-party service (rule 7), and Iranians on a VPN would get English by IP. Persian addresses never move.
     Help that only applies to Iran (VPN, error 403, direct APK) goes on the Persian page only.
+13. **A big job: say so in the first seconds (owner, 2026-10-31).** He sends a task and leaves the chat. When a message
+    looks like a heavy job (minutes or more, several steps, a push of many pages, anything that will need his OK), the
+    very first output, before reading files, is one Persian line, e.g. «کار بزرگیه و احتمالاً تأییدت لازمه؛ چند ثانیه
+    صبر کن تا بخونم و بپرسم.» Then read what's needed and ask everything that needs his OK in one message, early.
