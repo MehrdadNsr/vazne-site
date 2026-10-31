@@ -2,6 +2,11 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-31 — AGENTS.md rule 13 (no page change)
+
+- Owner: a big job gets a one-line heads-up first, then every question for him in one early message, so he can answer
+  once and leave. Checked: `bash tools/check.sh` passes; no page touched.
+
 ## 2026-10-30 — Tester page: TestFlight steps and the invite code
 
 - Owner, 2026-10-30: iPhone testers install TestFlight, then don't know what to do next. The iPhone box (`/test/` and
