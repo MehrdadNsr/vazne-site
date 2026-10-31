@@ -2,6 +2,15 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-31 — Privacy policy and delete-account page match app 1.2.0
+
+- What: privacy (fa + en): the cloud backup of signed-in accounts (contents, latest copy only, kept until the account is
+  deleted, deleted with it); the country check (at start and every few minutes, kept only in anonymous usage stats); the
+  in-app path Settings › Manage account › Delete account; developer name «مهرداد نصراله‌خانی» / Mehrdad Nasrollahkhani;
+  progress photos never leave the phone. Delete-account page (fa + en): the same path, name and the cloud backup.
+- Why: owner, 2026-10-31 — the App Privacy / Data Safety audit found these differences from the app's code.
+- Checked: `bash tools/check.sh` (all passed).
+
 ## 2026-10-31 — AGENTS.md rule 13 (no page change)
 
 - Owner: a big job gets a one-line heads-up first, then every question for him in one early message, so he can answer
