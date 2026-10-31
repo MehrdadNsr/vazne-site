@@ -5,8 +5,8 @@ Newest first. Each entry: what changed, why, how it was checked.
 ## 2026-10-31 — Privacy: PostHog product analytics (draft, owner to approve before `main`)
 
 What: /privacy/ (fa + en) names PostHog: summary, §5 new bullet (what is sent, account-id link, replay off, Europe
-asked first), §8 providers + «only third-party analytics», §10 transfers, §11 12 months, §12 deleted within 30 days
-with the account. Why: the app sends product analytics to PostHog from OTA 1.1.16. Checked: `bash tools/check.sh`.
+asked first), §8 providers + «only third-party analytics», §10 transfers, §11 kept for PostHog's retention period with the IP (owner, 2026-10-31: nothing
+deleted, IP kept), §12 not deleted with the account. Why: the app sends product analytics to PostHog from OTA 1.1.16. Checked: `bash tools/check.sh`.
 The site itself still has no analytics (rule 7).
 
 ## 2026-10-31 — AGENTS.md rule 13 (no page change)
