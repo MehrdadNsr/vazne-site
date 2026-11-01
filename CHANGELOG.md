@@ -2,6 +2,12 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-10-31 — Hero button opens testing and installation
+
+- What: the hero CTA uses the shared tester URL: `/fa/test/` on Persian, `/test/` on English, Arabic and Spanish.
+- Why: the owner asked for “Explore the experience” to open the app testing and installation page.
+- Checked: `bash tools/check.sh`; generated links verified in all four home pages.
+
 ## 2026-10-31 — Privacy policy and delete-account page match app 1.2.0
 
 - What: privacy (fa + en): the cloud backup of signed-in accounts (contents, latest copy only, kept until the account is
