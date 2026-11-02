@@ -9,6 +9,20 @@ asked first), §8 providers + «only third-party analytics», §10 transfers, §
 deleted, IP kept), §12 not deleted with the account. Then (same day, owner): PostHog sees only a random id, its link to the
 account is on our server and goes for good with the account; «not deleted» removed; a support-email line in §5. Why: the app sends product analytics to PostHog from OTA 1.1.16. Checked: `bash tools/check.sh`.
 The site itself still has no analytics (rule 7).
+## 2026-10-31 — Hero button opens testing and installation
+
+- What: the hero CTA uses the shared tester URL: `/fa/test/` on Persian, `/test/` on English, Arabic and Spanish.
+- Why: the owner asked for “Explore the experience” to open the app testing and installation page.
+- Checked: `bash tools/check.sh`; generated links verified in all four home pages.
+
+## 2026-10-31 — Privacy policy and delete-account page match app 1.2.0
+
+- What: privacy (fa + en): the cloud backup of signed-in accounts (contents, latest copy only, kept until the account is
+  deleted, deleted with it); the country check (at start and every few minutes, kept only in anonymous usage stats); the
+  in-app path Settings › Manage account › Delete account; developer name «مهرداد نصراله‌خانی» / Mehrdad Nasrollahkhani;
+  progress photos never leave the phone. Delete-account page (fa + en): the same path, name and the cloud backup.
+- Why: owner, 2026-10-31 — the App Privacy / Data Safety audit found these differences from the app's code.
+- Checked: `bash tools/check.sh` (all passed).
 
 ## 2026-10-31 — AGENTS.md rule 13 (no page change)
 
