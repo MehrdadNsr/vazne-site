@@ -2,6 +2,12 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-02 — account deletion: 30-day grace (branch `delete-grace`, published only when the server part is live)
+- privacy/ (fa + en): §12 deletion takes 30 days, sign in again to restore, then deleted for good, email for sooner;
+  §11 account data and cloud backup kept 30 days after deletion; §4 «we don't use your data to train AI models either».
+- delete-account/ (fa + en): one line after the in-app steps on the 30 days. The email path stays «within 30 days».
+- Why: owner, 2026-11-01. Checked: tools/check.sh.
+
 ## 2026-10-31 — Hero button opens testing and installation
 
 - What: the hero CTA uses the shared tester URL: `/fa/test/` on Persian, `/test/` on English, Arabic and Spanish.
