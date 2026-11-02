@@ -2,6 +2,12 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-02 — Tra (branch `tra-terms`; publish only when the wallet is turned on)
+- terms/ §9b (fa + en): what Tra is, store-only purchases, no cash value / transfer, purchased Tra never expires, free Tra first and
+  may change, refunds (Android 24 h through Google Play once a year; iPhone through Apple, Apple decides), abuse, account deletion.
+- privacy/ (fa + en): Tra purchases and the ledger, why and how long; payment details stay with Apple / Google; the guest wallet id.
+- Why: owner, 2026-11-01. Checked: tools/check.sh.
+
 ## 2026-10-31 — Hero button opens testing and installation
 
 - What: the hero CTA uses the shared tester URL: `/fa/test/` on Persian, `/test/` on English, Arabic and Spanish.
