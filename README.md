@@ -91,3 +91,10 @@ or DNS records other than the website's own (the `api` record belongs to the app
 
 Search: the sitemap is at https://vazne.app/sitemap.xml (submit it in Google Search Console after big changes). Do not invent prices, ratings,
 reviews, store links or download counts in the structured data; the app is in testing.
+
+## Publishing
+
+A push to `main` runs `.github/workflows/pages.yml`: it copies the public files into `_site` (no `*.md`, `.claude/`,
+`src/`, `tools/`, `tests/`), stops if an internal file slipped in, and force-pushes the result to the `gh-pages` branch.
+GitHub Pages serves `gh-pages` (Settings → Pages → Deploy from a branch → `gh-pages` → `/ (root)`). Never edit
+`gh-pages` by hand; it is rebuilt from `main` on every push.

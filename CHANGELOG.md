@@ -2,6 +2,15 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-10 — Publishing through the gh-pages branch
+
+- Owner, 2026-11-10: `actions/deploy-pages` got stuck at "syncing_files" on every run today (3 failures), so nothing
+  after 1 November reached the live site. `.github/workflows/pages.yml` now builds `_site` (public files only: no `*.md`,
+  `.claude/`, `.github/`, `src/`, `tools/`, `tests/`, package files), refuses to publish if any of those slip in, and
+  force-pushes it to the `gh-pages` branch. GitHub Pages serves that branch (Settings → Pages → Deploy from a branch →
+  `gh-pages` → `/ (root)`, set by the owner). `main` stays the source; never edit `gh-pages` by hand.
+- Checked: the same filtering run locally on `HEAD` (output: the site files, `CNAME`, `.nojekyll`; no `.md`, no `.claude`).
+
 ## 2026-11-10 — Tester page: the TestFlight code copies in full everywhere
 
 - Owner, 2026-11-10: testers said only 4 characters of the TestFlight code got copied. The copy button used only

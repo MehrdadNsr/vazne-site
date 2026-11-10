@@ -1,4 +1,9 @@
-name: Deploy to GitHub Pages
+name: Publish site to gh-pages
+
+# Builds the public site into _site and force-pushes it to the gh-pages branch, which GitHub Pages serves
+# (Settings → Pages → Deploy from a branch → gh-pages → / (root)). Agent and internal files (CLAUDE.md, AGENTS.md,
+# README and every other *.md, .claude/, .github/, src/, tools/, tests/, package files) stay on main and are never
+# published. Replaces actions/deploy-pages, whose deployments got stuck at "syncing_files" (owner, 2026-11-10).
 
 on:
   push:
@@ -7,41 +12,43 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: 'pages'
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      # Publish the site only. Agent/internal files (CLAUDE.md, AGENTS.md, README and other
-      # *.md notes, .claude/, tools/, tests/, package.json) stay in the repo but are never served.
       - name: Assemble site files
         run: |
           set -euo pipefail
           rsync -a \
             --exclude='_site/' --exclude='.git/' --exclude='.github/' --exclude='.claude/' \
-            --exclude='.gitignore' --exclude='.nojekyll' --exclude='*.md' \
-            --exclude='tools/' --exclude='tests/' \
+            --exclude='.gitignore' --exclude='*.md' \
+            --exclude='src/' --exclude='tools/' --exclude='tests/' \
             --exclude='package.json' --exclude='package-lock.json' \
             ./ _site/
+          touch _site/.nojekyll
+          test -f _site/CNAME && test -f _site/index.html
+      - name: Refuse internal files
+        run: |
+          set -euo pipefail
+          bad=$(find _site \( -iname '*.md' -o -name '.claude' -o -name '.github' -o -name 'src' -o -name 'tools' \
+            -o -name 'tests' -o -name 'package.json' -o -name 'package-lock.json' -o -name '.env*' \) -print)
+          if [ -n "$bad" ]; then echo "Internal files in the output:"; echo "$bad"; exit 1; fi
           find _site -type f | sort
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '_site'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push to gh-pages
+        run: |
+          set -euo pipefail
+          cd _site
+          git init -q -b gh-pages
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -q -m "Publish ${GITHUB_SHA}"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
