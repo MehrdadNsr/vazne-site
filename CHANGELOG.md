@@ -2,6 +2,14 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-10 — Privacy policy: the server is on Cloudflare, not Hetzner
+
+- What: `/privacy/` §8 and §10 (both languages): the server runs on Cloudflare, the database in Western Europe (D1,
+  region WEUR), each request handled in the nearest Cloudflare data centre; «Last updated» 10 November 2026. Nothing else
+  in the policy changed.
+- Why: the app's server moved from Hetzner (Germany) to Cloudflare on 2026-11-09 (owner, 2026-11-10).
+- Checked: `bash tools/check.sh`; no «Hetzner» / «Germany» / «آلمان» left on the site.
+
 ## 2026-10-31 — Hero button opens testing and installation
 
 - What: the hero CTA uses the shared tester URL: `/fa/test/` on Persian, `/test/` on English, Arabic and Spanish.
