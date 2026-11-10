@@ -2,6 +2,18 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-10 — Tester page: the TestFlight code copies in full everywhere
+
+- Owner, 2026-11-10: testers said only 4 characters of the TestFlight code got copied. The copy button used only
+  `navigator.clipboard`, which in-app browsers (Telegram, Instagram) and older iPhones lack, so it did nothing there and
+  people selected the code by hand, where a long press on iPhone picks only part of it. Now (`assets/testers.js`): the
+  clipboard API, else a hidden field and `execCommand('copy')`, else the whole code is selected and the button says
+  «انتخاب شد، کپی کن» / "Selected, now copy"; tapping the code itself selects all of it; `-webkit-user-select: all` for
+  Safari. Same on `/test/` and `/fa/test/`. Asset version `20261110`.
+- Checked: `tools/check.sh --browser`; Chromium as iPhone 14: normal clipboard → `9g8auNhk`, no clipboard API → the hidden
+  field copies `9g8auNhk`, nothing works → `9g8auNhk` selected; tapping the code selects `9g8auNhk`. Not tried on a real
+  iPhone or inside Telegram.
+
 ## 2026-11-10 — Privacy policy: the server is on Cloudflare, not Hetzner
 
 - What: `/privacy/` §8 and §10 (both languages): the server runs on Cloudflare, the database in Western Europe (D1,
