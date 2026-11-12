@@ -63,3 +63,22 @@ html[data-lang=fa] .doc[lang=en], html[data-lang=en] .doc[lang=fa] { display: no
   .guide-body h2 { font-size: 21px; }
   .guide-cta { padding: 24px; border-radius: 22px; }
 }
+
+/* guide tables, lists and FAQ (Persian guides, 2026-11-12) */
+.guide-body p + p, .guide-body p + ul, .guide-body ul + p, .guide-body .table-wrap + p, .guide-body h3 + p { margin-top: 12px; }
+.guide-body h3 { margin: 22px 0 0; font-size: 18px; line-height: 1.6; font-weight: 600; }
+.guide-body ul { margin: 12px 0 0; padding-inline-start: 22px; color: #3a4250; }
+.guide-body li { margin-bottom: 6px; }
+.table-wrap { margin: 16px 0 4px; overflow-x: auto; border: 1px solid #e3e6ec; border-radius: 16px; background: #fff; }
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; }
+.table-wrap th, .table-wrap td { padding: 9px 12px; text-align: start; vertical-align: top; border-bottom: 1px solid #eef0f4; }
+.table-wrap th { position: sticky; top: 0; background: #f6f7f9; color: #212734; font-weight: 600; white-space: nowrap; }
+.table-wrap tr:last-child td { border-bottom: 0; }
+.table-wrap td:first-child { white-space: nowrap; color: var(--muted); }
+.table-wrap td:nth-child(2) { min-width: 7.5em; color: #212734; }
+.faq-block { margin-top: 12px; }
+@media (max-width: 800px) {
+  .table-wrap { margin-inline: -12px; border-radius: 12px; }
+  .table-wrap table { font-size: 13px; }
+  .table-wrap th, .table-wrap td { padding: 8px 7px; }
+}

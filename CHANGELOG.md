@@ -2,6 +2,29 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-12 — Seven Persian guides for Persian search, «راهنماها» on /fa/, Vaznib in the FAQ
+
+- Owner, 2026-11-12 (Search Console: 245 impressions / 5 clicks in 90 days; English guides rank ~40): Persian-first content.
+  New Persian-only pages, each for one search intent: `/fa/guides/beginner-3-day-program/` (برنامه بدنسازی ۳ روزه برای
+  مبتدی), `4-day-hypertrophy-program` (برنامه حجمی ۴ روزه), `push-pull-legs` (برنامه پوش پول لگ),
+  `home-workout-no-equipment` (برنامه تمرینی خانگی بدون دستگاه), `workout-log-sheet` (جدول ثبت تمرین باشگاه),
+  `progressive-overload` (اضافه‌بار تدریجی), `warm-up-before-workout` (گرم کردن قبل از تمرین بدنسازی). ~1000–1300 words each,
+  a program table with the app's exercise names (checked against `src/bank/exercises.ts` of the app repo), FAQ with
+  FAQPage + Article JSON-LD, a coach/doctor line, CTA «همین برنامه رو توی وزنه باز کن» → `/fa/test/`, 2–3 related links.
+  Self-canonical, `hreflang="fa"` only (exception to rule 12, written into AGENTS.md). Drafts by other assistants
+  (Muse, DeepSeek, Gemini / Opus), edited here: names fixed to the bank, invented claims removed, half-spaces and digits.
+- `/fa/guides/import-workout-plan/` rewritten and expanded (scan / file / text / manual, photo tips, review, supersets;
+  ~970 words, FAQ); its English twin and hreflang unchanged.
+- `/fa/` gets a «راهنماها» list (id `guides`; `FA_GUIDES` in `tools/build.py`); the Persian footer's «راهنماها» link goes there.
+- Home FAQ, first answer, all four languages: «sometimes searched as Vaznib».
+- `sitemap.xml`: the seven new URLs; `<lastmod>` for the pages changed today (`LASTMOD`). robots.txt unchanged.
+- CSS: tables, h3, lists and FAQ in guides (`page.css`, `?v=20261112` on the changed pages); the list on `/fa/`
+  (`experience.css`, `VERSION` 20261112).
+- Tests: JSON-LD may be Article / FAQPage; each Persian-only guide is in the sitemap, fa-only hreflang, ≤ 60 / ≤ 155
+  characters, one h1, no Latin digits in the body, linked from `/fa/`. `tools/browser_check.cjs` loads the seven pages.
+- Checked: `bash tools/check.sh --browser` (all pages as Android / iPhone / computer, no sideways scroll); screenshots of a
+  guide table, FAQ and the /fa/ list at 390 px.
+
 ## 2026-11-10 — Publishing through the gh-pages branch
 
 - Owner, 2026-11-10: `actions/deploy-pages` got stuck at "syncing_files" on every run today (3 failures), so nothing

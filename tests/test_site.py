@@ -81,7 +81,7 @@ for url in urls:
         check(other.exists() and any(a.get('href') == url for a in pages[other].find('link', rel='alternate')), f'{url}: hreflang {lang} not reciprocal')
     for graph in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
         for node in json.loads(graph)['@graph']:
-            check(node['@type'] in ['WebSite', 'SoftwareApplication', 'WebPage', 'BreadcrumbList'], f'{url}: unexpected JSON-LD {node["@type"]}')
+            check(node['@type'] in ['WebSite', 'SoftwareApplication', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'], f'{url}: unexpected JSON-LD {node["@type"]}')
             check(not any(k in node for k in ['aggregateRating', 'review', 'offers']), f'{url}: no invented ratings/prices')
 for home_lang, home in HOMES.items():
     page = pages[local(home)]
@@ -100,6 +100,20 @@ check(all(k in texts[ROOT / 'fa/test/index.html'] for k in ('VPN', 'class="apk"'
 # Every English page with a Persian twin sends Iran there (AGENTS.md rule 12)
 for spec_path, twin in [('test/index.html', '/fa/test/')] + [(f'guides/{g}/index.html', f'/fa/guides/{g}/') for g in ('workout-tracker', 'import-workout-plan', 'track-workout-progress')]:
     check(f'data-persian-page="{twin}"' in texts[ROOT / spec_path], f'{spec_path}: lang.js must carry data-persian-page="{twin}"')
+# Persian-only guides (owner, 2026-11-12): self-canonical, fa hreflang only, FAQ + Article schema, linked from /fa/
+FA_ONLY = ['beginner-3-day-program', '4-day-hypertrophy-program', 'push-pull-legs', 'home-workout-no-equipment',
+           'workout-log-sheet', 'progressive-overload', 'warm-up-before-workout']
+for g in FA_ONLY:
+    url = f'{SITE}/fa/guides/{g}/'
+    page, text = pages[ROOT / f'fa/guides/{g}/index.html'], texts[ROOT / f'fa/guides/{g}/index.html']
+    check(url in urls, f'{g}: missing from the sitemap')
+    check({a['hreflang']: a['href'] for a in page.find('link', rel='alternate') if 'hreflang' in a} == {'fa': url}, f'{g}: hreflang must be fa → itself only')
+    check('"FAQPage"' in text and '"Article"' in text, f'{g}: FAQPage + Article schema')
+    check(len(re.search(r'<title>(.*?)</title>', text).group(1)) <= 60, f'{g}: title over 60 characters')
+    check(len(page.find('meta', name='description')[0]['content']) <= 155, f'{g}: description over 155 characters')
+    check(text.count('<h1') == 1, f'{g}: exactly one h1')
+    check(f'href="/fa/guides/{g}/"' in texts[ROOT / 'fa/index.html'], f'{g}: not linked from /fa/')
+    check(not re.search(r'[0-9]', re.sub(r'<[^>]+>|https?://\S+|&[#\w]+;', '', text.split('<main', 1)[1].split('</main>')[0])), f'{g}: Latin digit in the body')
 for path in ['test/index.html', 'fa/test/index.html', '404.html']:
     check(any('noindex' in a.get('content', '') for a in pages[ROOT / path].find('meta', name='robots')), f'{path} needs noindex')
 

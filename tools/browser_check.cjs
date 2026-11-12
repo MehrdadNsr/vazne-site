@@ -16,7 +16,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream' });
   res.end(fs.readFileSync(file));
 });
-const PAGES = ['/', '/fa/', '/ar/', '/es/', '/test/', '/fa/test/', '/guides/workout-tracker/', '/fa/guides/import-workout-plan/', '/privacy/', '/terms/?lang=fa', '/delete-account/', '/missing-page'];
+const PAGES = ['/', '/fa/', '/ar/', '/es/', '/test/', '/fa/test/', '/guides/workout-tracker/', '/fa/guides/import-workout-plan/', '/fa/guides/beginner-3-day-program/', '/fa/guides/4-day-hypertrophy-program/', '/fa/guides/push-pull-legs/', '/fa/guides/home-workout-no-equipment/', '/fa/guides/workout-log-sheet/', '/fa/guides/progressive-overload/', '/fa/guides/warm-up-before-workout/', '/privacy/', '/terms/?lang=fa', '/delete-account/', '/missing-page'];
 const SETUPS = { android: devices['Pixel 7'], iphone: devices['iPhone 14'], desktop: { viewport: { width: 1440, height: 900 } } };
 
 server.listen(0, '127.0.0.1', async () => {
