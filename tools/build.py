@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'src'
 SITE = 'https://vazne.app'
-VERSION = '20261032'  # bump to make browsers fetch changed CSS/JS
+VERSION = '20261112'  # bump to make browsers fetch changed CSS/JS
 
 LANGS = ['en', 'fa', 'ar', 'es']  # order of the language menu
 RTL = {'fa', 'ar'}
@@ -33,6 +33,14 @@ PAGES = {
     'fa/guides/workout-tracker/index.html': {'lang': 'fa', 'alt': {'en': '/guides/workout-tracker/', 'fa': '/fa/guides/workout-tracker/'}},
     'fa/guides/import-workout-plan/index.html': {'lang': 'fa', 'alt': {'en': '/guides/import-workout-plan/', 'fa': '/fa/guides/import-workout-plan/'}},
     'fa/guides/track-workout-progress/index.html': {'lang': 'fa', 'alt': {'en': '/guides/track-workout-progress/', 'fa': '/fa/guides/track-workout-progress/'}},
+    # Persian-only guides (owner, 2026-11-12: written for Persian search; exception to AGENTS.md rule 12)
+    'fa/guides/beginner-3-day-program/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/beginner-3-day-program/'}},
+    'fa/guides/4-day-hypertrophy-program/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/4-day-hypertrophy-program/'}},
+    'fa/guides/push-pull-legs/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/push-pull-legs/'}},
+    'fa/guides/home-workout-no-equipment/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/home-workout-no-equipment/'}},
+    'fa/guides/workout-log-sheet/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/workout-log-sheet/'}},
+    'fa/guides/progressive-overload/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/progressive-overload/'}},
+    'fa/guides/warm-up-before-workout/index.html': {'lang': 'fa', 'alt': {'fa': '/fa/guides/warm-up-before-workout/'}},
     'privacy/index.html': {'lang': 'bilingual', 'alt': {'en': '/privacy/?lang=en', 'fa': '/privacy/?lang=fa'}},
     'terms/index.html': {'lang': 'bilingual', 'alt': {'en': '/terms/?lang=en', 'fa': '/terms/?lang=fa'}},
     'delete-account/index.html': {'lang': 'bilingual', 'alt': {'en': '/delete-account/?lang=en', 'fa': '/delete-account/?lang=fa'}},
@@ -47,7 +55,32 @@ SITEMAP = [
     {'en': '/guides/workout-tracker/', 'fa': '/fa/guides/workout-tracker/'},
     {'en': '/guides/import-workout-plan/', 'fa': '/fa/guides/import-workout-plan/'},
     {'en': '/guides/track-workout-progress/', 'fa': '/fa/guides/track-workout-progress/'},
+    {'fa': '/fa/guides/beginner-3-day-program/'},
+    {'fa': '/fa/guides/4-day-hypertrophy-program/'},
+    {'fa': '/fa/guides/push-pull-legs/'},
+    {'fa': '/fa/guides/home-workout-no-equipment/'},
+    {'fa': '/fa/guides/workout-log-sheet/'},
+    {'fa': '/fa/guides/progressive-overload/'},
+    {'fa': '/fa/guides/warm-up-before-workout/'},
     {'en': '/privacy/'}, {'en': '/terms/'}, {'en': '/delete-account/'},
+]
+# <lastmod> for pages changed since the sitemap got dates (2026-11-12); bump a page's date when its content changes.
+LASTMOD = {path: '2026-11-12' for path in list(HOME.values()) + ['/fa/guides/import-workout-plan/'] + [f'/fa/guides/{g}/' for g in (
+    'beginner-3-day-program', '4-day-hypertrophy-program', 'push-pull-legs', 'home-workout-no-equipment',
+    'workout-log-sheet', 'progressive-overload', 'warm-up-before-workout')]}
+
+# «راهنماها» on the Persian home page only (the guides are written for Persian search). (url, title)
+FA_GUIDES = [
+    ('/fa/guides/beginner-3-day-program/', 'برنامه بدنسازی ۳ روزه برای مبتدی‌ها'),
+    ('/fa/guides/4-day-hypertrophy-program/', 'برنامه حجمی ۴ روزه'),
+    ('/fa/guides/push-pull-legs/', 'برنامه پوش پول لگ'),
+    ('/fa/guides/home-workout-no-equipment/', 'برنامه تمرینی خانگی بدون دستگاه'),
+    ('/fa/guides/warm-up-before-workout/', 'گرم کردن قبل از تمرین'),
+    ('/fa/guides/progressive-overload/', 'اضافه‌بار تدریجی به زبان ساده'),
+    ('/fa/guides/workout-log-sheet/', 'جدول ثبت تمرین باشگاه'),
+    ('/fa/guides/import-workout-plan/', 'وارد کردن برنامه تمرینی از عکس'),
+    ('/fa/guides/workout-tracker/', 'ثبت دقیق تمرین بدنسازی'),
+    ('/fa/guides/track-workout-progress/', 'خواندن پیشرفت تمرین'),
 ]
 
 ICON = {
@@ -141,7 +174,7 @@ def nav(lang, alternates, home_page=False, tester_page=False):
 
 def footer(lang, home_page=False):
     base = 'en' if lang == 'bilingual' else lang
-    guide = '/fa/guides/workout-tracker/' if lang == 'fa' else '/guides/workout-tracker/'
+    guide = '/fa/#guides' if lang == 'fa' else '/guides/workout-tracker/'
     guide_attr = ' hreflang="en"' if lang in ('ar', 'es') else ''
     motion = (f'<button class="plain" id="motion" type="button" aria-pressed="true" data-on="{esc(get(lang, "chrome.motion_on"))}" '
               f'data-off="{esc(get(lang, "chrome.motion_off"))}">{get(lang, "chrome.motion_on")}</button>') if home_page else ''
@@ -188,6 +221,13 @@ def json_ld(lang):
 AUTO_LANGUAGE = '<script src="/assets/lang.js?v={v}" data-auto-language></script>'
 
 
+def guides_section(lang):
+    if lang != 'fa':
+        return ''
+    links = ''.join(f'<li><a href="{url}">{title} {ICON["arrow"]}</a></li>' for url, title in FA_GUIDES)
+    return f'<section class="guides" id="guides">\n<h2>{get(lang, "chrome.guides")}</h2>\n<ul>{links}</ul>\n</section>\n'
+
+
 def render_home(lang):
     template = (SRC / 'home.html').read_text(encoding='utf-8')
     template = re.sub(r'\{\{> ([\w.-]+)\}\}', lambda m: (SRC / 'partials' / m.group(1)).read_text(encoding='utf-8').strip(), template)
@@ -199,6 +239,7 @@ def render_home(lang):
         'nav': nav(lang, HOME, home_page=True), 'footer': footer(lang, home_page=True),
         'arrow': ICON['arrow'], 'arrow_icon': ICON['arrow'], 'check_icon': ICON['check'],
         'android_icon': ICON['android'], 'phone_icon': ICON['phone'], 'tester_url': tester_url(lang),
+        'guides_section': guides_section(lang),
         'hero.plates_4': get(lang, 'hero.plates').replace('{n}', digits(lang, 4)),
     }
     for n in ['01', '02', '03', '8', '10', '20', '50', '60', '100']:
@@ -253,7 +294,8 @@ def sitemap():
             if len(group) > 1:
                 alts = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{c}" href="{SITE}{p}"/>' for c, p in group.items())
                 alts += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{group.get("en", path)}"/>'
-            rows.append(f'  <url>\n    <loc>{SITE}{path}</loc>{alts}\n  </url>')
+            lastmod = f'\n    <lastmod>{LASTMOD[path]}</lastmod>' if path in LASTMOD else ''
+            rows.append(f'  <url>\n    <loc>{SITE}{path}</loc>{lastmod}{alts}\n  </url>')
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
             + '\n'.join(rows) + '\n</urlset>\n')

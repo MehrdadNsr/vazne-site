@@ -37,6 +37,10 @@ language in step.
     `Asia/Tehran` or a saved Persian choice; never crawlers or `?lang=`). Time zone, not IP: GitHub Pages can't see the IP
     without a third-party service (rule 7), and Iranians on a VPN would get English by IP. Persian addresses never move.
     Help that only applies to Iran (VPN, error 403, direct APK) goes on the Persian page only.
+    **Exception (owner, 2026-11-12): the Persian-only guides** under `/fa/guides/` listed in `PAGES` without an English
+    twin (`beginner-3-day-program`, `4-day-hypertrophy-program`, `push-pull-legs`, `home-workout-no-equipment`,
+    `workout-log-sheet`, `progressive-overload`, `warm-up-before-workout`) are written for Persian search, not translated:
+    self-canonical, `hreflang="fa"` to themselves only, never pointing at English pages that do not exist.
 13. **A big job: say so in the first seconds (owner, 2026-10-31).** He sends a task and leaves the chat. When a message
     looks like a heavy job (minutes or more, several steps, a push of many pages, anything that will need his OK), the
     very first output, before reading files, is one Persian line, e.g. «کار بزرگیه و احتمالاً تأییدت لازمه؛ چند ثانیه

@@ -10,7 +10,8 @@ Pages from the `main` branch, repository root**: a push to `main` is live within
 |---|---|---|
 | `/`, `/fa/`, `/ar/`, `/es/` | Home page (3D barbell, demo, FAQ, download buttons) | English, Persian, Arabic, Spanish |
 | `/test/`, `/fa/test/` | Tester page: small 3D barbell, Android closed testing (3 steps), iPhone TestFlight, QR code on computers. The Persian page alone adds the help for Iran: VPN note, error 403 at step 2, direct APK download. `/test/` sends Iran's time zone (or a saved Persian choice) to `/fa/test/` (`assets/lang.js`, `data-persian-page`; AGENTS.md rule 12) | English, Persian — `noindex` |
-| `/guides/…`, `/fa/guides/…` | Three guides: workout log, plan import, reading progress | English + Persian |
+| `/guides/…`, `/fa/guides/…` | Three guides in both languages: workout log, plan import, reading progress | English + Persian |
+| `/fa/guides/…` (7 more) | Persian-only guides written for Persian search (owner, 2026-11-12): 3-day beginner program, 4-day upper/lower, push-pull-legs, home bodyweight, workout log sheet, progressive overload, warm-up. Each has a program table, an FAQ (FAQPage + Article schema) and a CTA to `/fa/test/`; listed in «راهنماها» on `/fa/` (`FA_GUIDES` in `tools/build.py`) | Persian |
 | `/privacy/`, `/terms/`, `/delete-account/` | Legal pages; both languages in one file, English is binding. Linked from the app and the stores: never move them | English + Persian (`?lang=fa`) |
 | `404.html` | Page not found | English + links to every language |
 
@@ -71,6 +72,10 @@ tests/                              test_site.py (links, SEO, translations), scr
 - **Home page text:** edit `src/i18n/<lang>.json` (keep the same keys in all four), then `python3 tools/build.py`.
 - **Home page layout:** `src/home.html` (+ `assets/experience.css`), then build.
 - **Top bar / footer / language menu:** `tools/build.py` (`nav()`, `footer()`) + `assets/base.css`, then build.
+- **A Persian-only guide:** copy one of the seven, keep the structure (one h1, `.table-wrap` tables with exercise names exactly
+  as in the app's bank, `.faq-block` + the FAQPage JSON-LD with the same questions), add it to `PAGES`, `SITEMAP`, `LASTMOD`
+  and `FA_GUIDES` in `tools/build.py` and to `FA_ONLY` in `tests/test_site.py`, build. Title ≤ 60, description ≤ 155,
+  both starting with the main keyword; Persian digits; no invented numbers or medical claims.
 - **A guide or legal page:** edit the HTML directly (outside the markers). Legal text comes from the owner; keep the
   English and Persian versions saying the same thing and update "Last updated".
 - **A new page:** write it in English and Persian (AGENTS.md rule 12): copy a guide pair, add both to `PAGES` (and

@@ -282,3 +282,10 @@ h2 em { font-style: normal; color: #727b89; }
   .motion .reveal:not(.seen) .feature, .motion .reveal:not(.seen) .visual { opacity: 1; transform: none; }
   .chartline { stroke-dashoffset: 0; }
 }
+
+/* «راهنماها» list (Persian home page only, 2026-11-12) */
+.guides { max-width: 950px; margin: 0 auto; padding: 70px 7vw 0; }
+.guides h2 { font-size: 36px; margin-bottom: 24px; }
+.guides ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.guides a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 16px; background: #ffffffb8; font-size: 15px; transition: border-color .2s; }
+.guides a:hover { border-color: var(--red); color: var(--red); }
