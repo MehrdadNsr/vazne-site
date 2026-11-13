@@ -2,6 +2,12 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-13 — App Store QR code
+
+- Home pages (all four languages): «Show the QR code» under the download buttons (a `<details>`, works without JS) with an inline SVG QR of the App Store link and a one-line hint (owner: a button that shows the QR). Made with segno, same style as the /test/ QR; decoded back to the link with OpenCV.
+- Hero status line and closing line: «iPhone on the App Store · Android in testing» instead of «iOS + Android · Currently in testing».
+- Checked: `tools/check.sh`, screenshots of /fa/ and / at phone width.
+
 ## 2026-11-13 — App Store link
 
 - Vazne is live on the App Store (https://apps.apple.com/app/id6815885757, owner). `assets/links.js` `iosAppStore` filled: every iPhone button on the home pages goes to the App Store; /test/ and /fa/test/ show «Install from the App Store» with TestFlight as a small secondary link. HTML fallbacks updated.

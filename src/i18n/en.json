@@ -41,7 +41,7 @@
     "note_start": "YOUR NEXT PERSONAL BEST<br>STARTS WITH ONE MORE REP",
     "note_end": "DRAG TO EXPLORE<br>ADJUST YOUR LOAD",
     "cta": "Explore the experience",
-    "status": "iOS + Android · Currently in testing",
+    "status": "iPhone on the App Store · Android in testing",
     "load_label": "MAKE IT HEAVIER",
     "range_label": "Barbell weight in kilograms",
     "plates": "{n} × 5 KG / SIDE",
@@ -139,6 +139,8 @@
     "android_sub": "Closed testing on Google Play",
     "iphone": "iPhone",
     "tester": "Become a Vazne tester",
-    "text": "Built for your training. In English and Persian.<br>iOS + Android · Currently in testing."
+    "text": "Built for your training. In English and Persian.<br>iPhone on the App Store · Android in testing.",
+    "qr": "Show the QR code",
+    "qr_sub": "Scan it with your iPhone camera to open Vazne on the App Store."
   }
 }

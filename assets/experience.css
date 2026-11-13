@@ -184,6 +184,11 @@ h2 em { font-style: normal; color: #727b89; }
 .store small { display: block; font-size: 11px; line-height: 1.5; opacity: .78; }
 .store .if-appstore, .has-appstore .store .if-testflight { display: none; }
 .has-appstore .store .if-appstore { display: block; }
+.qr-box { margin: 18px auto 0; text-align: center; }
+.qr-box summary { display: inline-block; cursor: pointer; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; list-style: none; }
+.qr-box summary::-webkit-details-marker { display: none; }
+.qr-box .qr { display: block; width: 200px; height: 200px; margin: 14px auto 8px; padding: 10px; background: #fff; border-radius: 14px; }
+.qr-box small { display: block; font-size: 12px; opacity: .78; max-width: 280px; margin: 0 auto; }
 .tester-link { display: inline-block; margin-top: 24px; padding-bottom: 3px; border-bottom: 1px solid #9da5b2; font-size: 13px; color: #3d4655; }
 .tester-link:hover { color: var(--red); border-color: var(--red); }
 

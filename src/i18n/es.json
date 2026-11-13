@@ -40,7 +40,7 @@
     "note_start": "TU PRÓXIMA MARCA PERSONAL<br>EMPIEZA CON UNA REPETICIÓN MÁS",
     "note_end": "ARRASTRA PARA EXPLORAR<br>AJUSTA TU CARGA",
     "cta": "Descubre la experiencia",
-    "status": "iOS + Android · En fase de pruebas",
+    "status": "iPhone en la App Store · Android en pruebas",
     "load_label": "AÑADE PESO",
     "range_label": "Peso de la barra en kilogramos",
     "plates": "{n} × 5 KG POR LADO",
@@ -138,6 +138,8 @@
     "android_sub": "Prueba cerrada en Google Play",
     "iphone": "iPhone",
     "tester": "Hazte tester de Vazne",
-    "text": "Hecho para tu entrenamiento. La app está en inglés y persa.<br>iOS + Android · En fase de pruebas."
+    "text": "Hecho para tu entrenamiento. La app está en inglés y persa.<br>iPhone en la App Store · Android en pruebas.",
+    "qr": "Ver el código QR",
+    "qr_sub": "Escanéalo con la cámara del iPhone para abrir Vazne en la App Store."
   }
 }
