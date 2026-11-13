@@ -138,7 +138,7 @@ function runTesters({ ua, touch = 0, appStore = '' }) {
       querySelector: () => null,
     },
   };
-  vm.runInNewContext(LINKS_JS.replace("iosAppStore: ''", `iosAppStore: '${appStore}'`), ctx);
+  vm.runInNewContext(LINKS_JS.replace(/iosAppStore: '[^']*'/, `iosAppStore: '${appStore}'`), ctx);
   ctx.window.VAZNE_LINKS = ctx.window.VAZNE_LINKS;
   vm.runInNewContext(TESTERS_JS, ctx);
   return { device: attrs['data-device'], appstore: classes.has('has-appstore'), hrefs: Object.fromEntries(anchors.map((a) => [a.key, a.href])) };

@@ -2,6 +2,13 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-13 — App Store link
+
+- Vazne is live on the App Store (https://apps.apple.com/app/id6815885757, owner). `assets/links.js` `iosAppStore` filled: every iPhone button on the home pages goes to the App Store; /test/ and /fa/test/ show «Install from the App Store» with TestFlight as a small secondary link. HTML fallbacks updated.
+- FAQ «Can I download it now?» in all four languages: yes on iPhone (App Store), Android still in closed testing. The Arabic/Spanish answers no longer say the tester page is in Persian.
+- Region-neutral link (no `/us/`), so each visitor lands on their own country's store.
+- Checked: `tools/check.sh --browser`; the script test now replaces any `iosAppStore` value.
+
 ## 2026-11-12 — Seven Persian guides for Persian search, «راهنماها» on /fa/, Vaznib in the FAQ
 
 - Owner, 2026-11-12 (Search Console: 245 impressions / 5 clicks in 90 days; English guides rank ~40): Persian-first content.

@@ -2,8 +2,8 @@
  * Vazne download and tester links: the only place to change them.
  * Used by /test/ and by the download buttons on the home pages (assets/testers.js reads it).
  *
- * - iosAppStore: leave '' until the App Store page is live. Once it is filled, every iPhone
- *   button switches to the App Store and TestFlight becomes a small secondary link.
+ * - iosAppStore: the App Store page (live since 2026-11-13). While it is filled, every iPhone button goes to the
+ *   App Store and TestFlight is a small secondary link on /test/. Set it to '' to fall back to TestFlight.
  * - The HTML keeps the same links as a fallback for visitors without JavaScript; after changing
  *   a link here, search the HTML for the old one (grep) and update it there too.
  */
@@ -18,7 +18,7 @@ window.VAZNE_LINKS = {
 
   // iPhone
   iosTestFlight: 'https://testflight.apple.com/join/9g8auNhk',
-  iosAppStore: '',
+  iosAppStore: 'https://apps.apple.com/app/id6815885757',
   testFlightApp: 'https://apps.apple.com/app/testflight/id899247664',
 
   // The tester page itself. The QR code on /test/ is a fixed picture of this address:
