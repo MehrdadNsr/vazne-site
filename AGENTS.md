@@ -36,7 +36,7 @@ language in step.
     and everyone else stays on English (`data-persian-page="/fa/…"` on the English page's lang.js tag; Iran = time zone
     `Asia/Tehran` or a saved Persian choice; never crawlers or `?lang=`). Time zone, not IP: GitHub Pages can't see the IP
     without a third-party service (rule 7), and Iranians on a VPN would get English by IP. Persian addresses never move.
-    Help that only applies to Iran (VPN, error 403, direct APK) goes on the Persian page only.
+    Help that only applies to Iran (VPN, error 403) goes on the Persian page only; the direct APK is on both (owner, 2026-11-13).
     **Exception (owner, 2026-11-12): the Persian-only guides** under `/fa/guides/` listed in `PAGES` without an English
     twin (`beginner-3-day-program`, `4-day-hypertrophy-program`, `push-pull-legs`, `home-workout-no-equipment`,
     `workout-log-sheet`, `progressive-overload`, `warm-up-before-workout`) are written for Persian search, not translated:

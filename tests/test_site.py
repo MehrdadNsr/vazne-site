@@ -95,7 +95,8 @@ robots = (ROOT / 'robots.txt').read_text()
 check('Sitemap: ' + SITE + '/sitemap.xml' in robots, 'robots.txt must point to the sitemap')
 check('Disallow: /test' not in robots and 'Disallow: /fa/test' not in robots, 'do not Disallow the tester pages (crawlers must see their noindex)')
 # Tester pages (owner, 2026-10-30): the Iran-only help (VPN, error 403, direct APK) is on the Persian page only
-check(not re.search(r'VPN|class="apk"|class="fix"|class="notice"', texts[ROOT / 'test/index.html']), 'test/: the English page must not carry the Iran-only help')
+check(not re.search(r'VPN|class="fix"|class="notice"', texts[ROOT / 'test/index.html']), 'test/: the English page must not carry the Iran-only help')
+check('class="apk"' in texts[ROOT / 'test/index.html'], 'test/: the direct APK download is missing (owner, 2026-11-13: on both pages)')
 check(all(k in texts[ROOT / 'fa/test/index.html'] for k in ('VPN', 'class="apk"', 'class="fix"')), 'fa/test/: VPN, 403 and APK help missing')
 # Every English page with a Persian twin sends Iran there (AGENTS.md rule 12)
 for spec_path, twin in [('test/index.html', '/fa/test/')] + [(f'guides/{g}/index.html', f'/fa/guides/{g}/') for g in ('workout-tracker', 'import-workout-plan', 'track-workout-progress')]:

@@ -2,6 +2,11 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-13 — Direct APK on the English tester page
+
+- `/test/` now has the same «Couldn’t install it?» box as `/fa/test/` (direct APK, 63 MB, the after-download steps), owner. VPN and error-403 help stay Persian-only. AGENTS.md rule 12, README and the site test updated.
+- Checked: `tools/check.sh --browser`.
+
 ## 2026-11-13 — App Store QR code
 
 - Home pages (all four languages): «Show the QR code» under the download buttons (a `<details>`, works without JS) with an inline SVG QR of the App Store link and a one-line hint (owner: a button that shows the QR). Made with segno, same style as the /test/ QR; decoded back to the link with OpenCV.
