@@ -2,6 +2,15 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-14 — legal pages: owner's legal name, new AI features, logs / backups, Tra terms
+- Privacy, Terms, Delete account (en + fa): the owner's legal name «Mehrdad Nasrollah Khani» / «مهرداد نصرالله خانی» everywhere;
+  privacy lists the AI features added since (second look, long-term path, coach changing today's workout, imported-program
+  review) and media.vazne.app (exercise animations, © Gym visual); server logs 3 days; daily encrypted backups 14 days +
+  D1 Time Travel 30 days. Terms §14 «Tra»: no cash value, store refunds, base of 70 Tra never expires, the rest expires 1 year
+  after purchase (2 years if over US$10 bought in total). Delete account: Tra balance deleted, new log / backup times.
+- Why: the owner's decisions of 2026-11-14 after a legal review (app repo `docs/legal/2026-11-14-legal-review.fa.md`).
+- Checked: `bash tools/check.sh` (12 pass).
+
 ## 2026-11-13 — Direct APK on the English tester page
 
 - `/test/` now has the same «Couldn’t install it?» box as `/fa/test/` (direct APK, 63 MB, the after-download steps), owner. VPN and error-403 help stay Persian-only. AGENTS.md rule 12, README and the site test updated.
