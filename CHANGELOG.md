@@ -2,6 +2,16 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-16 — privacy policy for app 1.4.0 (en + fa)
+
+- Privacy page (`/privacy/`, both languages; there are no ar / es legal pages): PostHog product analytics (PostHog Inc., US,
+  random analytics id kept apart from the account id, session replay off, off with the «help improve» switch, EU / EEA / UK / CH
+  asked first); the old «no third-party analytics» wording replaced by «no advertising tracking, no selling, analytics only as
+  described and switchable off» (summary, sections 5, 8, 10, 11); Apple Health / Health Connect write-only (section 7);
+  Partner Mode (section 7); two-way sync between a user's own phones (section 3). Last updated 2026-11-16.
+- Why: the data practices of app 1.4.0 (app repo, branch `integrate`: `docs/store/*`, change notes 2026-11-14..16).
+- Checked: `bash tools/check.sh`.
+
 ## 2026-11-14 — legal pages: owner's legal name, new AI features, logs / backups, Tra terms
 - Privacy, Terms, Delete account (en + fa): the owner's legal name «Mehrdad Nasrollah Khani» / «مهرداد نصرالله خانی» everywhere;
   privacy lists the AI features added since (second look, long-term path, coach changing today's workout, imported-program
