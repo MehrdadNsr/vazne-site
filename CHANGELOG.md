@@ -2,6 +2,9 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-20 — direct APK 1.5.0
+- `download/vazne-1.5.0.apk` (EAS `website-apk` build eca64655, versionCode 13, from app commit 0e354dd — the same commit as the Play and iOS 1.5.0 builds) replaces 1.4.0; links in `assets/links.js`, `test/index.html`, `fa/test/index.html` (still 69 MB). Why: owner, 2026-11-20 — the site always offers the latest Android build. Checked: `tools/check.sh`, no keys in the APK (only Expo's public `expo-root.pem`, as before).
+
 ## 2026-11-20 — Tra removed from the legal pages
 - Terms: section 14 «Tra (in-app credit)» removed in en + fa, «Contact» renumbered 15 → 14; delete-account: «any Tra balance» dropped (en + fa). Why: owner, 2026-11-20 — nothing in the app is paid for now and Tra is not offered; the Tra terms come back (branch `tra-terms`) when it launches. Checked: `tools/check.sh`.
 
