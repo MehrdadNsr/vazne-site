@@ -2,6 +2,9 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-20 — Tra removed from the legal pages
+- Terms: section 14 «Tra (in-app credit)» removed in en + fa, «Contact» renumbered 15 → 14; delete-account: «any Tra balance» dropped (en + fa). Why: owner, 2026-11-20 — nothing in the app is paid for now and Tra is not offered; the Tra terms come back (branch `tra-terms`) when it launches. Checked: `tools/check.sh`.
+
 ## 2026-11-16 — direct APK 1.4.0
 - `download/vazne-1.4.0.apk` (EAS `website-apk` build 9a77dc77, from app commit 6cbff59, same as the Play build) replaces 1.1.9; links in `assets/links.js`, `test/index.html`, `fa/test/index.html` (69 MB). Why: owner — the site always offers the latest Android build. Checked: `tools/check.sh`, no keys in the APK assets.
 
