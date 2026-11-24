@@ -2,6 +2,9 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-24 — privacy: Vazne reads Apple Health / Health Connect data
+- `/privacy/` (en + fa), summary bullet and section 7: the page said Vazne writes workouts and reads nothing; app 1.6.0 also reads sleep, steps, distance, body weight, body fat, heart rate, resting heart rate, active energy, height (and date of birth on iOS), shown only in the app and kept on the phone. The permission is asked from Settings > Workout or once after the first finished workout. «Last updated» 24 Nov 2026. Why: App Review 5.1.3 and Google Play's Health Connect policy require the policy to match what the app reads; owner's OK 2026-11-24. Checked: `tools/check.sh`.
+
 ## 2026-11-20 — direct APK 1.5.0
 - `download/vazne-1.5.0.apk` (EAS `website-apk` build eca64655, versionCode 13, from app commit 0e354dd — the same commit as the Play and iOS 1.5.0 builds) replaces 1.4.0; links in `assets/links.js`, `test/index.html`, `fa/test/index.html` (still 69 MB). Why: owner, 2026-11-20 — the site always offers the latest Android build. Checked: `tools/check.sh`, no keys in the APK (only Expo's public `expo-root.pem`, as before).
 
