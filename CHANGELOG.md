@@ -2,6 +2,11 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-26 — direct APK 1.7.0
+- What: `download/vazne-1.7.0.apk` replaces 1.6.0 (EAS `website-apk` build `38e4d620`, app commit `d646828`, 69 MB); links in `assets/links.js`, `/test/`, `/fa/test/`.
+- Why: new Android build 1.7.0 (build 33 line); the site APK follows every Android build.
+- Checked: `bash tools/check.sh`; APK opens as a zip.
+
 ## 2026-11-24 — direct APK 1.6.0
 - `download/vazne-1.6.0.apk` (EAS `website-apk` build 0bec2831, versionCode 17, from app commit 8a9fbb3 — the same commit as the Play and iOS 1.6.0 builds) replaces 1.5.0; links in `assets/links.js`, `test/index.html`, `fa/test/index.html` (still 69 MB). Why: the site always offers the latest Android build. Checked: `tools/check.sh`, arm64 only, no keys found in the bundle.
 

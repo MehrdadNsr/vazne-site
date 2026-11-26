@@ -14,7 +14,7 @@ window.VAZNE_LINKS = {
   androidStore: 'https://play.google.com/store/apps/details?id=com.vazne.app',
   // Direct download for testers who can't reach Google Play (Iran). The file lives in this repo under /download/;
   // replace it (and the name here and in test/index.html) with each new Android build. Keep only the newest file.
-  androidApk: '/download/vazne-1.6.0.apk',
+  androidApk: '/download/vazne-1.7.0.apk',
 
   // iPhone
   iosTestFlight: 'https://testflight.apple.com/join/9g8auNhk',
