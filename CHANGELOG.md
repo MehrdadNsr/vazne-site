@@ -2,6 +2,11 @@
 
 Newest first. Each entry: what changed, why, how it was checked.
 
+## 2026-11-26 — privacy: weekly Health summaries to the AI coach (branch `health-summaries`, NOT live)
+- What: privacy §1 and §7 (fa + en) say that, only with the user's in-app permission, a weekly summary of a few Health numbers (never raw records) goes through our server to Anthropic when the AI coach builds or improves a program; not kept by us, not used for training.
+- Why: owner (2026-11-26) — the app's `HEALTH_SUMMARIES_ENABLED` feature (off) needs this text before it is switched on. Publish only together with the in-app consent prompt and the new App Store / Play answers (app repo `docs/store/2026-11-21-store-changes-1.6.0.md` §6).
+- Checked: `bash tools/check.sh`.
+
 ## 2026-11-24 — direct APK 1.6.0
 - `download/vazne-1.6.0.apk` (EAS `website-apk` build 0bec2831, versionCode 17, from app commit 8a9fbb3 — the same commit as the Play and iOS 1.6.0 builds) replaces 1.5.0; links in `assets/links.js`, `test/index.html`, `fa/test/index.html` (still 69 MB). Why: the site always offers the latest Android build. Checked: `tools/check.sh`, arm64 only, no keys found in the bundle.
 
